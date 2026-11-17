@@ -36,7 +36,7 @@ function ProductPage() {
   const charmOptions = products.filter((item) => item.name.toLowerCase().startsWith("charm"));
   const sizes = isRing ? ["16", "18", "20", "22"] : ["Único"];
   const images = [product.image];
-  const related = products.filter((item) => item.id.startsWith("pandora-") && item.id !== product.id).slice(0, 4);
+  const related = products.filter((item) => item.id !== product.id && !item.name.toLowerCase().startsWith("charm")).slice(0, 4);
   const category = /anel/i.test(product.name) ? "Anéis" : /colar/i.test(product.name) ? "Colares" : /pulseira/i.test(product.name) ? "Pulseiras" : "Charms";
 
   const addToBag = () => {
