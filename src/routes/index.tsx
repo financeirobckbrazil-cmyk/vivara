@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Heart, Menu, ShoppingBag, Sparkles, X, ArrowRight, Check } from "lucide-react";
+import { Heart, Menu, ShoppingBag, Sparkles, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -207,12 +207,10 @@ const products: Product[] = [
 ];
 
 function HomePage() {
-  const [cart, setCart] = useState<number[]>([]);
   const [category, setCategory] = useState("Todos");
   const [menuOpen, setMenuOpen] = useState(false);
   const categories = ["Todos", "Pulseiras", "Charms de coração", "Charms temáticos", "Charms natalinos", "Anéis", "Colares"];
   const visibleProducts = useMemo(() => category === "Todos" ? products : products.filter((p) => p.category === category), [category]);
-  const addToCart = (id: number) => setCart((items) => [...items, id]);
   return (
     <main className="min-h-screen bg-[#fbfaf8] text-[#242321]">
       <div className="bg-[#242321] px-4 py-2 text-center text-[10px] tracking-[.22em] text-white">ELEGÂNCIA EM CADA DETALHE · NOVA COLEÇÃO COM FINALIZAÇÃO EM PLATINA</div>
@@ -220,7 +218,7 @@ function HomePage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <button aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full p-2 hover:bg-[#eeeae5]"><Menu size={20} /></button>
           <a href="#" className="font-serif text-3xl tracking-[.18em]">Pandora<span className="align-top text-xs">®</span></a>
-          <button onClick={() => document.getElementById("colecao")?.scrollIntoView({ behavior: "smooth" })} className="relative rounded-full p-2 hover:bg-[#eeeae5]" aria-label="Ver sacola"><ShoppingBag size={20} />{cart.length > 0 && <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#242321] text-[10px] text-white">{cart.length}</span>}</button>
+          <a href="#colecao" className="rounded-full p-2 hover:bg-[#eeeae5]" aria-label="Ver coleção"><ShoppingBag size={20} /></a>
         </div>
         {menuOpen && <div className="border-t border-[#e9e4de] px-6 py-4 text-center text-sm"><a href="#colecao" onClick={() => setMenuOpen(false)}>A coleção</a><span className="mx-5">·</span><a href="#diferencial" onClick={() => setMenuOpen(false)}>O diferencial</a></div>}
       </header>
@@ -245,7 +243,7 @@ function HomePage() {
       <section className="mx-auto max-w-7xl px-5 py-14 md:py-20" id="colecao">
         <div className="mb-9 flex flex-wrap items-end justify-between gap-5">
           <div><p className="text-[10px] uppercase tracking-[.25em] text-[#9b8d7e]">Encontre sua peça</p><h2 className="mt-2 font-serif text-3xl md:text-4xl">A coleção</h2><p className="mt-2 text-sm text-[#77716b]">19 opções para expressar sua personalidade.</p></div>
-          <div className="flex items-center gap-2 text-xs text-[#6f6962]"><ShoppingBag size={16} /> {cart.length} {cart.length === 1 ? "item" : "itens"} na sacola</div>
+          <p className="text-xs tracking-wide text-[#6f6962]">19 peças selecionadas</p>
         </div>
         <div className="mb-8 flex gap-2 overflow-x-auto pb-2">{categories.map((item) => <button key={item} onClick={() => setCategory(item)} className={`whitespace-nowrap border px-4 py-2 text-[10px] uppercase tracking-[.12em] transition ${category === item ? "border-[#242321] bg-[#242321] text-white" : "border-[#ddd7cf] text-[#625d57] hover:border-[#242321]"}`}>{item}</button>)}</div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
@@ -278,7 +276,6 @@ function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-16 text-center md:py-20"><Sparkles className="mx-auto text-[#a99b8d]" size={22} /><h2 className="mt-4 font-serif text-3xl md:text-4xl">Seu brilho, sua história</h2><p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#77716b]">Descubra detalhes que transformam momentos em lembranças. Escolha suas peças favoritas e crie combinações únicas.</p><a href="#colecao" className="mt-7 inline-flex items-center gap-3 bg-[#242321] px-7 py-4 text-[10px] uppercase tracking-[.2em] text-white hover:bg-[#55504a]">Ver coleção completa <ArrowRight size={15} /></a></section>
       <footer className="border-t border-[#e9e4de] bg-white px-6 py-8 text-center"><a href="#" className="font-serif text-2xl tracking-[.18em]">Pandora</a><p className="mt-3 text-[10px] tracking-wider text-[#99918a]">DESIGN · BRILHO · PERSONALIDADE</p><p className="mt-5 text-[10px] text-[#aaa39c]">Página demonstrativa de coleção. Fotografias de produtos disponibilizadas nas páginas oficiais da Pandora.</p></footer>
-      {cart.length > 0 && <div className="fixed bottom-5 right-5 z-40 flex items-center gap-3 bg-[#242321] px-5 py-4 text-white shadow-xl"><Check size={16} /><span className="text-xs">{cart.length} {cart.length === 1 ? "item adicionado" : "itens adicionados"} à sacola</span><button onClick={() => setCart([])} aria-label="Limpar sacola"><X size={15} /></button></div>}
     </main>
   );
 }
