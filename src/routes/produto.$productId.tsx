@@ -20,6 +20,7 @@ function ProductPage() {
   const [activeImage, setActiveImage] = useState(0);
   const [favorite, setFavorite] = useState(false);
   const [selectedCharms, setSelectedCharms] = useState<Record<string, number>>({});
+  const [selectedAddons, setSelectedAddons] = useState<Record<string, boolean>>({});
 
   if (!product) {
     return (
@@ -33,6 +34,9 @@ function ProductPage() {
 
   const isRing = /anel/i.test(product.name);
   const isBracelet = /pulseira/i.test(product.name);
+  const isCharm = /^charm/i.test(product.name);
+  const isNonBracelet = !isBracelet && !isCharm;
+  const addonOptions = ["colar-prata-cravejado", "kit-limpeza", "flanela-polimento"].map((id) => products.find((item) => item.id === id)).filter((item): item is (typeof products)[number] => Boolean(item));
   const charmIds = ["pandora-2", "pandora-3", "pandora-4", "pandora-6"];
   const charmOptions = charmIds.map((id) => products.find((item) => item.id === id)).filter((item): item is (typeof products)[number] => Boolean(item));
   const sizes = isRing ? ["16", "18", "20", "22"] : ["Único"];
@@ -41,6 +45,12 @@ function ProductPage() {
   const category = /anel/i.test(product.name) ? "Anéis" : /colar/i.test(product.name) ? "Colares" : /pulseira/i.test(product.name) ? "Pulseiras" : "Charms";
   const imageFallback = /pulseira/i.test(product.name) ? "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200" : /anel/i.test(product.name) ? "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362" : /colar/i.test(product.name) ? "https://www.marcolino.pt/content/uploads/maingallery/697976_17087744779.jpg" : "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
   const charmFallback = "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
+
+  const addSelectedAddons = () => {
+    Object.entries(selectedAddons).forEach(([id, selected]) => {
+      if (selected) add(id, "Único");
+    });
+  };
 
   const addSelectedCharms = () => {
     Object.entries(selectedCharms).forEach(([id, qty]) => {
@@ -51,12 +61,14 @@ function ProductPage() {
   const addToBag = () => {
     for (let i = 0; i < quantity; i += 1) add(product.id, selectedSize);
     if (isBracelet) addSelectedCharms();
-    toast.success(isBracelet ? "Pulseira e charms adicionados à sacola." : "Produto adicionado à sacola.");
+    if (isNonBracelet) addSelectedAddons();
+    toast.success(isBracelet ? "Pulseira e charms adicionados à sacola." : isNonBracelet ? "Produto e adicionais adicionados à sacola." : "Produto adicionado à sacola.");
   };
 
   const buyNow = () => {
     for (let i = 0; i < quantity; i += 1) add(product.id, selectedSize);
     if (isBracelet) addSelectedCharms();
+    if (isNonBracelet) addSelectedAddons();
     navigate({ to: "/checkout" });
   };
 
@@ -119,6 +131,33 @@ function ProductPage() {
                 <button onClick={() => setQuantity((q) => Math.min(10, q + 1))} aria-label="Aumentar quantidade" className="h-full px-4 hover:bg-[#f9edf2]"><Plus size={14} /></button>
               </div>
             </div>
+
+            {isNonBracelet && <section className="mt-6 rounded-xl border border-[#ead5df] bg-white p-3 sm:p-4">
+              <div className="mb-3 flex items-start justify-between gap-2">
+                <div>
+                  <p className="text-[9px] font-semibold uppercase tracking-[.16em] text-[#a45f82]">Complete seu pedido</p>
+                  <h2 className="mt-1 font-serif text-lg text-[#46343d]">Adicionais especiais</h2>
+                  <p className="mt-1 text-[10px] text-[#806a75]">Selecione os itens que deseja incluir. Opcional.</p>
+                </div>
+                <span className="shrink-0 rounded-full bg-[#fff1f6] px-2.5 py-1 text-[9px] font-semibold text-[#a45f82]">3 ofertas</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {addonOptions.map((addon) => {
+                  const selected = !!selectedAddons[addon.id];
+                  return <label key={addon.id} className={`overflow-hidden rounded-lg border cursor-pointer transition ${selected ? "border-[#b77f98] ring-1 ring-[#d7a9bd]" : "border-[#f0dce5]"}`}>
+                    <div className="aspect-square bg-[#fff3f7] p-1.5">
+                      <img src={addon.image} alt={addon.name} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://www.marcolino.pt/content/uploads/maingallery/697976_17087744779.jpg"; }} className="h-full w-full object-contain" />
+                    </div>
+                    <div className="p-2">
+                      <p className="min-h-8 text-[9px] leading-4 text-[#46343d]">{addon.name}</p>
+                      <p className="mt-1 text-[10px] font-semibold text-[#46343d]">{formatBRL(addon.price)}</p>
+                      <span className={`mt-2 flex items-center justify-center rounded-md px-1 py-2 text-[8px] font-semibold uppercase tracking-wide ${selected ? "bg-[#f8e8ef] text-[#694b5b]" : "bg-[#513b46] text-white"}`}>{selected ? "Selecionado" : "Adicionar"}</span>
+                    </div>
+                    <input type="checkbox" className="sr-only" checked={selected} onChange={(e) => setSelectedAddons((state) => ({ ...state, [addon.id]: e.target.checked }))} />
+                  </label>;
+                })}
+              </div>
+            </section>}
 
             {isBracelet && <section className="mt-6 rounded-xl border border-[#ead5df] bg-white p-3 sm:p-4">
               <div className="mb-3 flex items-center justify-between gap-2">
