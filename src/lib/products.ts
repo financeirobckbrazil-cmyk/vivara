@@ -17,14 +17,14 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  { id: "infinito", name: "Pulseira Life Coração em Prata 925 com Pedras Incolores", image: imgPulseira1.url, oldPrice: 420, price: 38.83 },
-  { id: "enigma", name: "Pulseira Life Coração em Prata 925", image: imgPulseira2.url, oldPrice: 610, price: 38.83 },
-  { id: "forms", name: "Pulseira Life Love Coração em Prata 925 com Pedras Azuis", image: imgPulseira3.url, oldPrice: 550, price: 38.83 },
-  { id: "cupido", name: "Pulseira Life Sua História em Prata 925", image: imgPulseira4.url, oldPrice: 450, price: 38.83 },
-  { id: "trancado", name: "Kit Pulseira Estrela Pingente Pegada Life", image: imgPulseira5.url, oldPrice: 399, price: 38.83 },
-  { id: "gota", name: "Pulseira Life Cadeado em Prata 925", image: imgPulseira6.url, oldPrice: 690, price: 38.83 },
-  { id: "coracao", name: "Pulseira Life em Prata 925", image: imgPulseira7.url, oldPrice: 499, price: 38.83 },
-  { id: "love", name: "Pulseira Vivara Life Prata Fecho Coração", image: imgPulseira8.url, oldPrice: 527, price: 38.83 },
+  { id: "infinito", name: "Pulseira Life Coração em Prata 925 com Pedras Incolores", image: imgPulseira1.url, oldPrice: 420, price: 35.78 },
+  { id: "enigma", name: "Pulseira Life Coração em Prata 925", image: imgPulseira2.url, oldPrice: 610, price: 35.78 },
+  { id: "forms", name: "Pulseira Life Love Coração em Prata 925 com Pedras Azuis", image: imgPulseira3.url, oldPrice: 550, price: 35.78 },
+  { id: "cupido", name: "Pulseira Life Sua História em Prata 925", image: imgPulseira4.url, oldPrice: 450, price: 35.78 },
+  { id: "trancado", name: "Kit Pulseira Estrela Pingente Pegada Life", image: imgPulseira5.url, oldPrice: 399, price: 35.78 },
+  { id: "gota", name: "Pulseira Life Cadeado em Prata 925", image: imgPulseira6.url, oldPrice: 690, price: 35.78 },
+  { id: "coracao", name: "Pulseira Life em Prata 925", image: imgPulseira7.url, oldPrice: 499, price: 35.78 },
+  { id: "love", name: "Pulseira Vivara Life Prata Fecho Coração", image: imgPulseira8.url, oldPrice: 527, price: 35.78 },
   
 ];
 
