@@ -59,7 +59,7 @@ function CartPage() {
                           </div>
                         </div>
                         <div className="mt-3 flex items-baseline gap-3">
-                          <span className="text-muted-foreground line-through text-sm">{formatBRL(product.oldPrice)}</span>
+                          {product.oldPrice && <span className="text-muted-foreground line-through text-sm">{formatBRL(product.oldPrice)}</span>}
                           <span className="text-price font-semibold">{formatBRL(product.price)}</span>
                         </div>
                       </div>
