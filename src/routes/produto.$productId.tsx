@@ -27,7 +27,7 @@ function ProductPage() {
       <main className="flex min-h-screen flex-col items-center justify-center bg-[#fff9fb] px-6 text-center">
         <p className="font-serif text-3xl text-[#46343d]">Produto não encontrado</p>
         <p className="mt-3 text-sm text-[#8b7781]">Este item pode ter sido removido da coleção.</p>
-        <Link to="/" className="mt-7 bg-[#46343d] px-6 py-3 text-xs uppercase tracking-[.16em] text-white">Voltar à loja</Link>
+        <Link to="/" className="mt-7 bg-[#d98eaa] px-6 py-3 text-xs uppercase tracking-[.16em] text-white">Voltar à loja</Link>
       </main>
     );
   }
@@ -74,7 +74,7 @@ function ProductPage() {
 
   return (
     <main className="min-h-screen bg-[#fff9fb] text-[#46343d]">
-      <div className="bg-[#46343d] px-4 py-2 text-center text-[9px] font-medium uppercase tracking-[.2em] text-white">Life Pandora · Descubra sua próxima peça favorita</div>
+      <div className="bg-[#d98eaa] px-4 py-2 text-center text-[9px] font-medium uppercase tracking-[.2em] text-white">Life Pandora · Descubra sua próxima peça favorita</div>
       <header className="sticky top-0 z-30 border-b border-[#f0dce5] bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 sm:h-[88px] sm:px-8">
           <Link to="/" aria-label="Início" className="rounded-full p-2 text-[#30252a] hover:bg-[#fff1f5]"><Menu size={27} strokeWidth={1.5} /></Link>
@@ -120,7 +120,7 @@ function ProductPage() {
 
             {isRing && <div className="mt-7">
               <div className="mb-3 flex items-center justify-between"><label className="text-[10px] font-semibold uppercase tracking-[.17em]">Selecione o aro</label><span className="text-[10px] text-[#a88b98]">Guia de medidas</span></div>
-              <div className="flex flex-wrap gap-2">{sizes.map((size) => <button key={size} onClick={() => setSelectedSize(size)} className={`h-11 min-w-11 border px-3 text-xs transition ${selectedSize === size ? "border-[#46343d] bg-[#46343d] text-white" : "border-[#e8cbd8] bg-white hover:border-[#46343d]"}`}>{size}</button>)}</div>
+              <div className="flex flex-wrap gap-2">{sizes.map((size) => <button key={size} onClick={() => setSelectedSize(size)} className={`h-11 min-w-11 border px-3 text-xs transition ${selectedSize === size ? "border-[#46343d] bg-[#d98eaa] text-white" : "border-[#e8cbd8] bg-white hover:border-[#46343d]"}`}>{size}</button>)}</div>
             </div>}
 
             <div className="mt-7">
@@ -151,7 +151,7 @@ function ProductPage() {
                     <div className="p-2">
                       <p className="min-h-8 text-[9px] leading-4 text-[#46343d]">{addon.name}</p>
                       <p className="mt-1 text-[10px] font-semibold text-[#46343d]">{formatBRL(addon.price)}</p>
-                      <span className={`mt-2 flex items-center justify-center rounded-md px-1 py-2 text-[8px] font-semibold uppercase tracking-wide ${selected ? "bg-[#f8e8ef] text-[#694b5b]" : "bg-[#513b46] text-white"}`}>{selected ? "Selecionado" : "Adicionar"}</span>
+                      <span className={`mt-2 flex items-center justify-center rounded-md px-1 py-2 text-[8px] font-semibold uppercase tracking-wide ${selected ? "bg-[#f8e8ef] text-[#694b5b]" : "bg-[#d98eaa] text-white"}`}>{selected ? "Selecionado" : "Adicionar"}</span>
                     </div>
                     <input type="checkbox" className="sr-only" checked={selected} onChange={(e) => setSelectedAddons((state) => ({ ...state, [addon.id]: e.target.checked }))} />
                   </label>;
@@ -191,7 +191,7 @@ function ProductPage() {
             </section>}
 
             <div className="mt-7 grid gap-3">
-              <button onClick={buyNow} className="flex h-14 items-center justify-center gap-3 bg-[#46343d] px-6 text-[10px] font-semibold uppercase tracking-[.2em] text-white transition hover:bg-[#51483f]">Comprar agora <ArrowRight size={15} /></button>
+              <button onClick={buyNow} className="flex h-14 items-center justify-center gap-3 bg-[#d98eaa] px-6 text-[10px] font-semibold uppercase tracking-[.2em] text-white transition hover:bg-[#51483f]">Comprar agora <ArrowRight size={15} /></button>
               <button onClick={addToBag} className="flex h-14 items-center justify-center gap-3 border border-[#46343d] bg-transparent px-6 text-[10px] font-semibold uppercase tracking-[.2em] transition hover:bg-[#f9e8ef]"><ShoppingBag size={15} /> Adicionar à sacola</button>
             </div>
             <button onClick={() => setFavorite((v) => !v)} className="mt-4 inline-flex items-center gap-2 py-2 text-xs text-[#806a75] hover:text-[#a56b76]"><Heart size={15} fill={favorite ? "currentColor" : "none"} /> {favorite ? "Adicionado aos favoritos" : "Adicionar aos favoritos"}</button>
