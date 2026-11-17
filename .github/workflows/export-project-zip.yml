@@ -1,0 +1,27 @@
+name: Export project ZIP
+on:
+  push:
+    paths:
+      - '.github/workflows/export-project-zip.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Package source project
+        run: |
+          zip -r life-pandora-projeto.zip . \
+            -x '.git/*' 'node_modules/*' 'dist/*' '.vercel/*' \
+               '.env' '.env.*' '**/.env' '**/.env.*' \
+               'life-pandora-projeto.zip'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: life-pandora-projeto
+          path: life-pandora-projeto.zip
+          retention-days: 7
