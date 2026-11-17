@@ -17,8 +17,8 @@ export const Route = createFileRoute("/checkout")({
 
 type Shipping = { id: string; label: string; eta: string; price: number; free?: boolean };
 const SHIPPING: Shipping[] = [
-  { id: "sedex", label: "Sedex (Recomendado)", eta: "de 2 até 3 dias", price: 33.71 },
-  { id: "jadlog", label: "JadLog Package", eta: "de 5 até 7 dias", price: 22.89 },
+  { id: "sedex", label: "Sedex (Recomendado)", eta: "de 2 até 3 dias", price: 19.90 },
+  { id: "jadlog", label: "JadLog Package", eta: "de 5 até 7 dias", price: 12.90 },
   { id: "pac", label: "PAC - Correios", eta: "de 7 até 10 dias", price: 0, free: true },
 ];
 
