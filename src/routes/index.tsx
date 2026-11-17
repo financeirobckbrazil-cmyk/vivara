@@ -226,17 +226,17 @@ function HomePage() {
       </header>
 
       <section className="relative overflow-hidden bg-[#eeeae5]">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-16 md:grid-cols-2 md:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 md:grid-cols-[1.05fr_.95fr] md:gap-16 md:py-24">
           <div className="relative z-10">
             <p className="mb-5 text-[10px] uppercase tracking-[.3em] text-[#82796f]">Uma nova forma de brilhar</p>
             <h1 className="max-w-xl font-serif text-4xl leading-[1.12] md:text-6xl">Conheça a nova coleção Pandora – <i>Finalização em Platina</i></h1>
             <p className="mt-6 max-w-lg text-sm leading-7 text-[#66615b] md:text-base">A Pandora apresenta uma nova geração de joias com acabamento em platina, combinando sofisticação, brilho e inovação.</p>
             <a href="#colecao" className="mt-8 inline-flex items-center gap-4 bg-[#242321] px-7 py-4 text-[10px] uppercase tracking-[.2em] text-white transition hover:bg-[#55504a]">Descubra a coleção <ArrowRight size={15} /></a>
           </div>
-          <div className="relative mx-auto flex h-[310px] w-full max-w-[500px] items-center justify-center md:h-[430px]">
+          <div className="relative mx-auto flex h-[340px] w-full max-w-[500px] items-center justify-center md:h-[500px]">
             <div className="absolute h-[270px] w-[270px] rounded-full border border-white/80 md:h-[370px] md:w-[370px]" />
             <div className="absolute h-[220px] w-[220px] rounded-full bg-white/50 blur-2xl md:h-[300px] md:w-[300px]" />
-            <div className="relative z-10 h-[290px] w-[290px] drop-shadow-xl md:h-[410px] md:w-[410px]"><img src={products[0].image} alt={products[0].name} className="h-full w-full object-contain mix-blend-multiply" /></div>
+            <div className="relative z-10 h-[320px] w-[320px] drop-shadow-xl md:h-[460px] md:w-[460px]"><img src={products[0].image} alt={products[0].name} className="h-full w-full object-contain" /></div>
             <span className="absolute bottom-5 right-4 font-serif text-sm italic text-[#82796f]">Brilho que conta histórias</span>
           </div>
         </div>
@@ -249,9 +249,21 @@ function HomePage() {
         </div>
         <div className="mb-8 flex gap-2 overflow-x-auto pb-2">{categories.map((item) => <button key={item} onClick={() => setCategory(item)} className={`whitespace-nowrap border px-4 py-2 text-[10px] uppercase tracking-[.12em] transition ${category === item ? "border-[#242321] bg-[#242321] text-white" : "border-[#ddd7cf] text-[#625d57] hover:border-[#242321]"}`}>{item}</button>)}</div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-          {visibleProducts.map((product) => <article key={product.id} className="group border border-[#e9e4de] bg-white">
-            <div className="relative aspect-square overflow-hidden bg-[#f1efeb] p-5 md:p-8"><img src={product.image} alt={product.name} loading="lazy" className="h-full w-full object-contain mix-blend-multiply transition duration-500 group-hover:scale-105" /><span className="absolute left-3 top-3 bg-white/80 px-2 py-1 text-[9px] uppercase tracking-widest text-[#77716b]">Platina</span><button aria-label={`Favoritar ${product.name}`} className="absolute right-3 top-3 rounded-full bg-white/80 p-2 text-[#77716b] hover:text-[#a56b76]"><Heart size={15} /></button></div>
-            <div className="p-4"><p className="text-[9px] uppercase tracking-[.15em] text-[#9b8d7e]">{product.category}</p><h3 className="mt-2 min-h-[42px] font-serif text-base leading-5">{product.name}</h3><p className="mt-2 min-h-[42px] text-[11px] leading-5 text-[#77716b]">{product.description}</p><div className="mt-4 flex items-center justify-between gap-2"><span className="text-sm font-medium">{product.price}</span><button onClick={() => addToCart(product.id)} className="flex items-center gap-1 bg-[#242321] px-3 py-2 text-[9px] uppercase tracking-wider text-white hover:bg-[#55504a]"><ShoppingBag size={12} /> Adicionar</button></div></div>
+          {visibleProducts.map((product) => <article key={product.id} className="group overflow-hidden border border-[#e9e4de] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(45,38,30,0.09)]">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[#f7f6f3]">
+              <img src={product.image} alt={product.name} loading="lazy" className="h-full w-full object-contain p-0 transition-transform duration-700 ease-out group-hover:scale-[1.08]" />
+              <span className="absolute left-3 top-3 bg-white/90 px-2.5 py-1.5 text-[9px] uppercase tracking-[.16em] text-[#77716b]">Finalização em platina</span>
+              <button aria-label={`Favoritar ${product.name}`} className="absolute right-3 top-3 rounded-full bg-white/90 p-2.5 text-[#77716b] shadow-sm transition hover:text-[#a56b76]"><Heart size={15} /></button>
+            </div>
+            <div className="flex min-h-[190px] flex-col p-4 md:p-5">
+              <p className="text-[9px] uppercase tracking-[.18em] text-[#9b8d7e]">{product.category}</p>
+              <h3 className="mt-2 min-h-[44px] font-serif text-base leading-5 md:text-[17px]">{product.name}</h3>
+              <p className="mt-2 flex-1 text-[11px] leading-5 text-[#77716b]">{product.description}</p>
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[#eeeae5] pt-4">
+                <span className="text-[11px] font-medium text-[#625d57]">{product.price}</span>
+                <a href={product.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#242321] px-3.5 py-2.5 text-[9px] uppercase tracking-[.13em] text-white transition hover:bg-[#62584e]">Ver produto <ArrowRight size={12} /></a>
+              </div>
+            </div>
           </article>)}
         </div>
         {visibleProducts.length === 0 && <p className="py-12 text-center text-sm text-[#77716b]">Nenhuma peça encontrada nesta categoria.</p>}
