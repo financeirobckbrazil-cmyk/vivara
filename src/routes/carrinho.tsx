@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Minus, Plus, X, Lock } from "lucide-react";
+import { Minus, Plus, X, Lock, Search, UserRound, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct } from "@/lib/products";
 
@@ -14,8 +14,15 @@ function CartPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <header className="bg-primary px-6 sm:px-10 py-5 flex items-center justify-between">
-        <span className="font-serif text-2xl sm:text-3xl tracking-[0.2em] text-brand font-semibold">LIFE <span className="text-[#a58a70]">PANDORA</span></span>
+      <header className="border-b border-border bg-white px-5 sm:px-8">
+        <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between sm:h-[88px]">
+          <Link to="/" className="font-sans text-[25px] font-semibold tracking-[-.045em] text-brand sm:text-[34px]">LIFE <span className="font-normal tracking-[-.055em]">PANDORA</span></Link>
+          <div className="flex items-center gap-3 text-brand sm:gap-6">
+            <Link to="/" hash="colecao" aria-label="Buscar produtos" className="rounded-full p-2 hover:bg-secondary"><Search className="h-6 w-6" strokeWidth={1.5} /></Link>
+            <Link to="/compras" aria-label="Minha conta" className="rounded-full p-2 hover:bg-secondary"><UserRound className="h-6 w-6" strokeWidth={1.5} /></Link>
+            <Link to="/carrinho" aria-label="Sacola" className="rounded-full p-2 hover:bg-secondary"><ShoppingBag className="h-7 w-7" strokeWidth={1.5} /></Link>
+          </div>
+        </div>
       </header>
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-8">
