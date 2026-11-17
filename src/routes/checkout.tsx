@@ -42,7 +42,7 @@ const BUMPS = [
     image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw6ea1f0c9/productimages/main_rect_center/CARE_KIT_JAR_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
     imageAlt: "Kit de limpeza para joias Pandora",
     tag: "CUIDE DAS SUAS PEÇAS",
-  },,
+  },
   {
     id: "flanela-polimento",
     eyebrow: "CUIDADO EXTRA",
