@@ -25,14 +25,14 @@ const SHIPPING: Shipping[] = [
 
 const BUMPS = [
   {
-    id: "flanela-prata",
-    eyebrow: "CUIDADO ESPECIAL",
-    title: "Flanela dupla para polimento",
-    desc: "Ajuda a manter suas joias limpas e com aparência brilhante no dia a dia.",
-    price: 14.87,
-    image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwf5bdc892/productimages/main_rect_center/CARE_KIT_POLISHING_CLOTH_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    imageAlt: "Flanela dupla para polimento de joias Pandora",
-    tag: "PEQUENO CUIDADO, GRANDE DIFERENÇA",
+    id: "colar-prata-cravejado",
+    eyebrow: "OFERTA ESPECIAL",
+    title: "Colar de prata com brilho cravejado",
+    desc: "Um toque delicado de brilho para complementar suas pulseiras e deixar sua composição ainda mais elegante.",
+    price: 48.45,
+    image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwb8d3b849/productimages/main_rect_center/335080C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
+    imageAlt: "Colar prateado Pandora com malha brilhante e fecho de coração",
+    tag: "BRILHO QUE COMPLETA SEU VISUAL",
   },
   {
     id: "kit-limpeza",
