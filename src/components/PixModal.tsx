@@ -10,7 +10,7 @@ type Props = {
   externalId: string | null;
   amountLabel: string;
   loading: boolean;
-  onCheck: (externalId: string) => Promise<{ status: string; redirect_url?: string }>;
+  onCheck: (externalId: string) => Promise<{ status: string }>;
   onPaid?: () => void;
 };
 
@@ -39,13 +39,7 @@ export function PixModal({ open, onClose, qrCode, externalId, amountLabel, loadi
         if (res.status === "paid") {
           setPaid(true);
           if (timer.current) clearInterval(timer.current);
-          if (res.redirect_url) {
-            const target = new URL(res.redirect_url);
-            new URLSearchParams(window.location.search).forEach((v, k) => target.searchParams.set(k, v));
-            window.location.href = target.toString();
-          } else if (onPaid) {
-            onPaid();
-          }
+          if (onPaid) onPaid();
         }
       } catch {
         /* keep polling */
@@ -108,7 +102,7 @@ export function PixModal({ open, onClose, qrCode, externalId, amountLabel, loadi
 
             <p className="mt-3 flex items-center justify-center gap-2 text-center text-[13px] text-muted-foreground">
               {paid ? (
-                "Pagamento confirmado! Redirecionando..."
+                "Pagamento confirmado! Seu pedido foi recebido."
               ) : (
                 <>
                   <Loader2 className="size-4 animate-spin" /> Aguardando pagamento...
