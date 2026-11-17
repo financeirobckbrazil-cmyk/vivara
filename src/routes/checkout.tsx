@@ -42,6 +42,16 @@ const BUMPS = [
     image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw6ea1f0c9/productimages/main_rect_center/CARE_KIT_JAR_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
     imageAlt: "Kit de limpeza para joias Pandora",
     tag: "CUIDE DAS SUAS PEÇAS",
+  },,
+  {
+    id: "flanela-polimento",
+    eyebrow: "CUIDADO EXTRA",
+    title: "Flanela macia para polimento",
+    desc: "Flanela delicada para remover marcas do dia a dia e devolver o brilho às suas joias.",
+    price: 19.90,
+    image: "/images/products/polishing-cloth.svg",
+    imageAlt: "Flanela rosa clara para polimento de joias",
+    tag: "MANTENHA O BRILHO DAS SUAS PEÇAS",
   },
 ];
 
@@ -66,6 +76,11 @@ const isValidEmail = (value: string) => /\S+@\S+\.\S+/.test(value.trim());
 
 function CheckoutPage() {
   const { items, total, count } = useCart();
+  const hasNonBraceletProduct = items.some((item) => {
+    const product = getProduct(item.id);
+    return product ? !/pulseira/i.test(product.name) : false;
+  });
+  const visibleBumps = hasNonBraceletProduct ? BUMPS : [];
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [bumps, setBumps] = useState<Record<string, boolean>>({});
   const [shipping, setShipping] = useState<string>("");
@@ -96,7 +111,7 @@ function CheckoutPage() {
     }
   };
 
-  const bumpsTotal = BUMPS.reduce((s, b) => s + (bumps[b.id] ? b.price : 0), 0);
+  const bumpsTotal = visibleBumps.reduce((s, b) => s + (bumps[b.id] ? b.price : 0), 0);
   const shippingPrice = SHIPPING.find((s) => s.id === shipping)?.price ?? 0;
   const grandTotal = total + bumpsTotal + shippingPrice;
 
@@ -438,7 +453,7 @@ function CheckoutPage() {
                 <p className="mt-2 font-serif text-lg leading-snug">Aproveite para cuidar ainda melhor das suas peças</p>
                 <p className="mt-1 text-xs leading-relaxed text-white/75">Adicionais exclusivos para completar seu pedido. Você escolhe se deseja incluir.</p>
               </div>
-              {BUMPS.map((b, index) => (
+              {visibleBumps.map((b, index) => (
                 <label
                   key={b.id}
                   className={`group relative block cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${bumps[b.id] ? "border-[#b77f98] ring-2 ring-[#d7a9bd]/30" : "border-[#f0dce5] hover:border-[#d7a9bd]"}`}
@@ -446,7 +461,7 @@ function CheckoutPage() {
                   <div className="relative flex h-28 items-center justify-center overflow-hidden bg-[#fff3f7] sm:h-32">
                     <img src={b.image} alt={b.imageAlt} loading="lazy" className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
                     <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[8px] font-semibold tracking-[0.13em] text-[#987184] shadow-sm">{b.eyebrow}</span>
-                    {index === 1 && <span className="absolute right-3 top-3 rounded-full bg-[#513b46] px-2.5 py-1 text-[8px] font-semibold tracking-wider text-white">KIT COMPLETO</span>}
+                    {b.id === "kit-limpeza" && <span className="absolute right-3 top-3 rounded-full bg-[#513b46] px-2.5 py-1 text-[8px] font-semibold tracking-wider text-white">KIT COMPLETO</span>}
                   </div>
                   <div className="p-4">
                     <div className="flex items-start justify-between gap-3">
