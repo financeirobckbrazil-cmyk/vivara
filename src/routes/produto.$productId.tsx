@@ -44,7 +44,7 @@ function ProductPage() {
   const related = products.filter((item) => item.id !== product.id && !item.name.toLowerCase().startsWith("charm") && !["colar-prata-cravejado", "kit-limpeza", "flanela-polimento"].includes(item.id)).slice(0, 4);
   const category = /anel/i.test(product.name) ? "Anéis" : /colar/i.test(product.name) ? "Colares" : /pulseira/i.test(product.name) ? "Pulseiras" : "Charms";
   const imageFallback = /pulseira/i.test(product.name) ? "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200" : /anel/i.test(product.name) ? "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362" : /colar/i.test(product.name) ? "https://www.marcolino.pt/content/uploads/maingallery/697976_17087744779.jpg" : "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
-  const charmFallback = "https://pandora-eshop.jo/cdn/shop/files/WEB_793604C01_front_RGB.png?v=1763624335&width=1000";
+  const charmFallback = "https://www.thbaker.co.uk/media/catalog/product/cache/559903688dc9fe82c7c6365725123978/1/7/17-06-25147811_pandora_01.jpg";
 
   const addSelectedAddons = () => {
     Object.entries(selectedAddons).forEach(([id, selected]) => {
@@ -162,9 +162,9 @@ function ProductPage() {
             {isBracelet && <section className="mt-6 rounded-xl border border-[#ead5df] bg-white p-3 sm:p-4">
               <div className="mb-3 flex items-center justify-between gap-2">
                 <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-[.16em] text-[#a45f82]">Oferta especial</p>
-                  <h2 className="mt-1 font-serif text-lg text-[#46343d]">Escolha seus charms</h2>
-                  <p className="mt-1 text-[10px] text-[#806a75]">Compre 1 e ganhe outro igual grátis.</p>
+                  <p className="text-[9px] font-semibold uppercase tracking-[.16em] text-[#a45f82]">Edição especial de Natal</p>
+                  <h2 className="mt-1 font-serif text-lg text-[#46343d]">Escolha seus charms natalinos</h2>
+                  <p className="mt-1 text-[10px] text-[#806a75]">Detalhes festivos para celebrar o Natal. Compre 1 e ganhe outro igual grátis.</p>
                 </div>
                 <span className="shrink-0 rounded-full bg-[#fff1f6] px-2.5 py-1 text-[9px] font-semibold text-[#a45f82]">4 opções</span>
               </div>
