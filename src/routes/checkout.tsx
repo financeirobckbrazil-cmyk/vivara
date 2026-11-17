@@ -7,12 +7,11 @@ import { formatBRL, getProduct } from "@/lib/products";
 import { createPixPayment, checkPixStatus } from "@/lib/pingupag.functions";
 import { QRCodeSVG } from "qrcode.react";
 import { toast } from "sonner";
-import logoLife from "@/assets/life-vivara-logo.png";
 
 
 
 export const Route = createFileRoute("/checkout")({
-  head: () => ({ meta: [{ title: "Checkout — Life Vivara" }] }),
+  head: () => ({ meta: [{ title: "Checkout — Life Pandora" }] }),
   component: CheckoutPage,
 });
 
@@ -194,8 +193,7 @@ function CheckoutPage() {
       </div>
       <header className="border-b border-[#eee7df] bg-white px-5 py-4 sm:px-10">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <Link to="/" className="font-serif text-xl tracking-[0.18em] text-[#28221e] sm:text-2xl">LIFE <span className="text-[#a58a70]">VIVARA</span></Link>
-          <img src={logoLife} alt="Life" className="h-8 w-auto sm:h-10" />
+          <Link to="/" className="font-serif text-xl font-semibold tracking-[0.18em] text-[#28221e] sm:text-2xl">LIFE <span className="text-[#a58a70]">PANDORA</span></Link>
           <span className="inline-flex items-center gap-2 rounded-full bg-[#f6f3ef] px-3 py-2 text-[10px] font-medium text-[#63584e]"><ShieldCheck className="h-3.5 w-3.5" /> Ambiente protegido</span>
         </div>
       </header>
