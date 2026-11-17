@@ -244,7 +244,7 @@ function CheckoutPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-foreground leading-snug">{product.name}</p>
-                      <p className="text-xs text-muted-foreground mt-1">Tamanho: {item.size} · Qtd: {item.qty}</p>
+                      <p className="text-xs text-muted-foreground mt-1">Tamanho: {item.size} · Qtd paga: {item.qty}{(item.bonusQty ?? 0) > 0 ? ` · + ${item.bonusQty} grátis` : ""}</p>
                     </div>
                     <span className="text-price font-semibold text-sm">{formatBRL(product.price * item.qty)}</span>
                   </li>
