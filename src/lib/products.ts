@@ -10,10 +10,10 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  { id: "infinito", name: "Pulseira Life Coração em Prata 925 com Pedras Incolores", image: "https://www.mostert-juweliers.nl/media/catalog/product/cache/1/thumbnail/1200x1200/5/9/pandora-moments-594594c00-snake-chain-zilveren-armband-met-hartje.png", oldPrice: 420, price: 35.78 },
+  { id: "infinito", name: "Pulseira Life Coração em Prata 925 com Pedras Incolores", image: "https://pandoraeg.com/cdn/shop/files/PandoraSnakechainsilverbraceletwithroundclasp590728_1_93f606de-fc70-4a8b-85b1-e704be2467b4.jpg?v=1765218041&width=2362", oldPrice: 420, price: 35.78 },
   { id: "enigma", name: "Pulseira Life Coração em Prata 925", image: "https://pandora.lucerneluxe.com/cdn/shop/products/HIGH_RGB_596268_RGB_1024x1024%402x.jpg?v=1599469372", oldPrice: 610, price: 35.78 },
   { id: "forms", name: "Pulseira Life Love Coração em Prata 925 com Pedras Azuis", image: "https://pandoraeg.com/cdn/shop/files/PandoraSnakechainsilverbraceletwithroundclasp590728_1_93f606de-fc70-4a8b-85b1-e704be2467b4.jpg?v=1765218041&width=2362", oldPrice: 550, price: 35.78 },
-  { id: "cupido", name: "Pulseira Life Sua História em Prata 925", image: "https://www.quickjewels.nl/media/fit?background=255%2C255%2C255&height=1200&type=jpeg&url=https%3A%2F%2Fwww.quickjewels.nl%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fi%2Fhigh_591469c01_rgb_1.jpg&width=1200", oldPrice: 450, price: 35.78 },
+  { id: "cupido", name: "Pulseira Life Sua História em Prata 925", image: "https://pandora.lucerneluxe.com/cdn/shop/products/HIGH_RGB_596268_RGB_1024x1024%402x.jpg?v=1599469372", oldPrice: 450, price: 35.78 },
   { id: "trancado", name: "Kit Pulseira Estrela Pingente Pegada Life", image: "https://www.mostert-juweliers.nl/media/catalog/product/cache/1/thumbnail/1200x1200/5/9/pandora-moments-594594c00-snake-chain-zilveren-armband-met-hartje.png", oldPrice: 399, price: 35.78 },
   { id: "gota", name: "Pulseira Life Cadeado em Prata 925", image: "https://pandora.lucerneluxe.com/cdn/shop/products/HIGH_RGB_596268_RGB_1024x1024%402x.jpg?v=1599469372", oldPrice: 690, price: 35.78 },
   { id: "coracao", name: "Pulseira Life em Prata 925", image: "https://pandoraeg.com/cdn/shop/files/PandoraSnakechainsilverbraceletwithroundclasp590728_1_93f606de-fc70-4a8b-85b1-e704be2467b4.jpg?v=1765218041&width=2362", oldPrice: 499, price: 35.78 },
