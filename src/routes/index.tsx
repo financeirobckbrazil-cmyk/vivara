@@ -7,7 +7,7 @@ import { useNavigate } from "@tanstack/react-router";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pandora | Coleção com finalização em platina" },
+      { title: "Life Pandora | Coleção com finalização em platina" },
       { name: "description", content: "Conheça 19 joias da nova coleção Pandora com acabamento em platina: pulseiras, charms, anéis e colares." },
     ],
   }),
@@ -221,7 +221,7 @@ function HomePage() {
       <header className="sticky top-0 z-30 border-b border-[#e9e4de] bg-[#fbfaf8]/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <button aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full p-2 hover:bg-[#eeeae5]"><Menu size={20} /></button>
-          <a href="#" className="font-serif text-3xl tracking-[.18em]">Pandora<span className="align-top text-xs">®</span></a>
+          <a href="#" className="font-serif text-2xl font-semibold tracking-[.18em]">LIFE <span className="text-[#a58a70]">PANDORA</span></a>
           <a href="#colecao" className="rounded-full p-2 hover:bg-[#eeeae5]" aria-label="Ver coleção"><ShoppingBag size={20} /></a>
         </div>
         {menuOpen && <div className="border-t border-[#e9e4de] px-6 py-4 text-center text-sm"><a href="#colecao" onClick={() => setMenuOpen(false)}>A coleção</a><span className="mx-5">·</span><a href="#diferencial" onClick={() => setMenuOpen(false)}>O diferencial</a></div>}
@@ -282,7 +282,7 @@ function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16 text-center md:py-20"><Sparkles className="mx-auto text-[#a99b8d]" size={22} /><h2 className="mt-4 font-serif text-3xl md:text-4xl">Seu brilho, sua história</h2><p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#77716b]">Descubra detalhes que transformam momentos em lembranças. Escolha suas peças favoritas e crie combinações únicas.</p><a href="#colecao" className="mt-7 inline-flex items-center gap-3 bg-[#242321] px-7 py-4 text-[10px] uppercase tracking-[.2em] text-white hover:bg-[#55504a]">Ver coleção completa <ArrowRight size={15} /></a></section>
-      <footer className="border-t border-[#e9e4de] bg-white px-6 py-8 text-center"><a href="#" className="font-serif text-2xl tracking-[.18em]">Pandora</a><p className="mt-3 text-[10px] tracking-wider text-[#99918a]">DESIGN · BRILHO · PERSONALIDADE</p><p className="mt-5 text-[10px] text-[#aaa39c]">Página demonstrativa de coleção. Fotografias de produtos disponibilizadas nas páginas oficiais da Pandora.</p></footer>
+      <footer className="border-t border-[#e9e4de] bg-white px-6 py-8 text-center"><a href="#" className="font-serif text-2xl font-semibold tracking-[.18em]">LIFE PANDORA</a><p className="mt-3 text-[10px] tracking-wider text-[#99918a]">DESIGN · BRILHO · PERSONALIDADE</p><p className="mt-5 text-[10px] text-[#aaa39c]">Página demonstrativa de coleção. Fotografias de produtos disponibilizadas nas páginas oficiais da Pandora.</p></footer>
     </main>
   );
 }
