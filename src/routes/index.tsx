@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Menu, ShoppingBag, Sparkles, ArrowRight } from "lucide-react";
+import { useCart } from "@/lib/cart";
+import { useNavigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -207,6 +209,8 @@ const products: Product[] = [
 ];
 
 function HomePage() {
+  const { add } = useCart();
+  const navigate = useNavigate();
   const [category, setCategory] = useState("Todos");
   const [menuOpen, setMenuOpen] = useState(false);
   const categories = ["Todos", "Pulseiras", "Charms de coração", "Charms temáticos", "Charms natalinos", "Anéis", "Colares"];
@@ -262,7 +266,7 @@ function HomePage() {
                   <p className="text-[9px] uppercase tracking-[.16em] text-[#9b8d7e]">Preço anunciado</p>
                   <p className="mt-1 text-xl font-semibold tracking-tight text-[#242321]">{product.price}</p>
                 </div>
-                <a href={product.link} target="_blank" rel="noreferrer" className="inline-flex w-full items-center justify-center gap-2 bg-[#242321] px-4 py-3 text-[10px] font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#62584e]">Comprar agora <ArrowRight size={13} /></a>
+                <button type="button" onClick={() => { add(`pandora-${product.id}`, "Único"); navigate({ to: "/checkout" }); }} className="inline-flex w-full items-center justify-center gap-2 bg-[#242321] px-4 py-3 text-[10px] font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#62584e]">Comprar agora <ArrowRight size={13} /></button>
               </div>
             </div>
           </article>)}
