@@ -24,7 +24,7 @@ export const products: Product[] = [
   { id: "trancado", name: "Kit Pulseira Estrela Pingente Pegada Life", image: imgPulseira5.url, oldPrice: 399, price: 35.78 },
   { id: "gota", name: "Pulseira Life Cadeado em Prata 925", image: imgPulseira6.url, oldPrice: 690, price: 35.78 },
   { id: "coracao", name: "Pulseira Life em Prata 925", image: imgPulseira7.url, oldPrice: 499, price: 35.78 },
-  { id: "love", name: "Pulseira Vivara Life Prata Fecho Coração", image: imgPulseira8.url, oldPrice: 527, price: 35.78 },
+  { id: "love", name: "Pulseira Pandora Life Prata Fecho Coração", image: imgPulseira8.url, oldPrice: 527, price: 35.78 },
   
   { id: "pandora-1", name: "Pulseira de Malha Brilhante", image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw1411f3dc/productimages/main_rect_center/534971C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384", price: 35.78 },
   { id: "pandora-2", name: "Charm Dachshund de Natal", image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwbf6e8cc0/productimages/main_rect_center/734970C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384", price: 35.78 },
