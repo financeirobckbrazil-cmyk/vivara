@@ -193,7 +193,7 @@ function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16 text-center md:py-20"><Sparkles className="mx-auto text-[#a99b8d]" size={22} /><h2 className="mt-4 font-serif text-3xl md:text-4xl">Seu brilho, sua história</h2><p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#8b7781]">Descubra detalhes que transformam momentos em lembranças. Escolha suas peças favoritas e crie combinações únicas.</p><a href="#colecao" className="mt-7 inline-flex items-center gap-3 bg-[#46343d] px-7 py-4 text-[10px] uppercase tracking-[.2em] text-white hover:bg-[#765968]">Ver coleção completa <ArrowRight size={15} /></a></section>
-      <footer className="border-t border-[#f0dce5] bg-white px-6 py-8 text-center"><a href="#" className="font-serif text-2xl font-semibold tracking-[.18em]">LIFE PANDORA</a><p className="mt-3 text-[10px] tracking-wider text-[#99918a]">DESIGN · BRILHO · PERSONALIDADE</p><p className="mt-5 text-[10px] text-[#aaa39c]">Página demonstrativa de coleção. Fotografias de produtos disponibilizadas nas páginas oficiais da Pandora.</p></footer>
+      <footer className="border-t border-[#f0dce5] bg-white px-6 py-8 text-center"><a href="#" className="font-serif text-2xl font-semibold tracking-[.18em]">LIFE PANDORA</a><p className="mt-3 text-[10px] tracking-wider text-[#99918a]">DESIGN · BRILHO · PERSONALIDADE</p><p className="mt-5 text-[10px] text-[#aaa39c]">Imagens ilustrativas geradas para esta vitrine. Loja independente, sem vínculo oficial com a Pandora.</p></footer>
     </main>
   );
 }
