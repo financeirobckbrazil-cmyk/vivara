@@ -206,7 +206,7 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] flex flex-col">
+    <div className="min-h-screen bg-[#fff9fb] flex flex-col">
       <div className="bg-[#211b18] px-4 py-2 text-center text-[9px] font-medium tracking-[0.2em] text-white/90 uppercase">
         Finalização segura · Seus dados protegidos
       </div>
@@ -224,7 +224,7 @@ function CheckoutPage() {
       </header>
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-7 sm:py-9">
-        <div className="mb-6 overflow-hidden rounded-xl bg-gradient-to-r from-[#f2ece5] via-[#faf7f3] to-[#eee5dc] px-5 py-6 sm:px-8 sm:py-8">
+        <div className="mb-6 overflow-hidden rounded-xl bg-gradient-to-r from-[#f9e8ef] via-[#fff9fb] to-[#f4dce7] px-5 py-6 sm:px-8 sm:py-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.24em] text-[#b77f98] uppercase"><Sparkles className="h-3.5 w-3.5" /> Falta pouco para sua joia chegar</p>
@@ -479,7 +479,7 @@ function CheckoutPage() {
                         <p className="mt-1 text-lg font-bold tracking-tight text-[#46343d]">{formatBRL(b.price)}</p>
                       </div>
                     </div>
-                    <div className={`mt-4 flex items-center justify-center gap-2 rounded-lg px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.15em] transition-colors ${bumps[b.id] ? "bg-[#f8e8ef] text-[#694b5b]" : "bg-[#513b46] text-white group-hover:bg-[#765968]"}`}>
+                    <div className={`mt-4 flex items-center justify-center gap-2 rounded-lg px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.15em] transition-colors ${bumps[b.id] ? "bg-[#f8e8ef] text-[#694b5b]" : "bg-[#513b46] text-white group-hover:bg-[#c87898]"}`}>
                       {bumps[b.id] ? <><Check className="h-3.5 w-3.5" /> Adicionado ao pedido</> : "Quero aproveitar esta oferta"}
                     </div>
                     <input
