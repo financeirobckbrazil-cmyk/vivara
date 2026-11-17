@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/site-layout";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/contato")({
-  head: () => ({ meta: [{ title: "Contato — Life Vivara" }] }),
+  head: () => ({ meta: [{ title: "Contato — Life Pandora" }] }),
   component: ContatoPage,
 });
 
@@ -64,7 +64,7 @@ function ContatoPage() {
         </form>
 
         <div className="mt-8 text-center text-sm text-muted-foreground space-y-1">
-          <p>contato@lifevivara.com.br</p>
+          <p>Atendimento Life Pandora</p>
           <p>0800 000 0000</p>
         </div>
       </section>
