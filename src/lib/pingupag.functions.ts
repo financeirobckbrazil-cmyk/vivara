@@ -92,7 +92,6 @@ export const checkPixStatus = createServerFn({ method: "POST" })
   )
   .handler(async ({ data }) => {
     const apiKey = process.env["PINGUPAG_API_KEY"];
-    const upsellUrl = process.env["PINGUPAG_UPSELL_URL"];
     if (!apiKey) throw new Error("Credenciais da Pingupag não configuradas.");
 
     let res: Response;
@@ -118,7 +117,7 @@ export const checkPixStatus = createServerFn({ method: "POST" })
     const paid = status === "paid" || status === "approved" || json?.paid === true;
 
     if (paid) {
-      return { status: "paid" as const, redirectUrl: upsellUrl ?? null };
+      return { status: "paid" as const };
     }
     return { status: "pending" as const };
   });
