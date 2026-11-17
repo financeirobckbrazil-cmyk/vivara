@@ -52,7 +52,9 @@ function ProductPage() {
       <header className="sticky top-0 z-30 border-b border-[#f0dce5] bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 sm:h-[88px] sm:px-8">
           <Link to="/" aria-label="Início" className="rounded-full p-2 text-[#30252a] hover:bg-[#fff1f5]"><Menu size={27} strokeWidth={1.5} /></Link>
-          <Link to="/" className="font-sans text-[25px] font-semibold tracking-[-.045em] text-[#241c20] sm:text-[34px]">LIFE <span className="font-normal tracking-[-.055em]">PANDORA</span></Link>
+          <Link to="/" aria-label="PANDORA - início" className="inline-flex items-center justify-center"><span className="relative inline-flex items-center font-sans text-[29px] font-semibold tracking-[-.055em] text-[#241c20] sm:text-[39px]">
+            PAND<span className="relative inline-block">O<span className="absolute -top-[13px] left-1/2 -translate-x-1/2 sm:-top-[16px]"><svg width="19" height="13" viewBox="0 0 19 13" fill="none" aria-hidden="true"><path d="M1.5 3.2L5.4 7.1L9.5 1.3L13.6 7.1L17.5 3.2L15.7 11H3.3L1.5 3.2Z" stroke="currentColor" strokeWidth="1.15" strokeLinejoin="round"/><circle cx="1.5" cy="2" r="1" fill="currentColor"/><circle cx="9.5" cy="1.4" r="1" fill="currentColor"/><circle cx="17.5" cy="2" r="1" fill="currentColor"/></svg></span></span>RA
+          </span></Link>
           <div className="flex items-center gap-3 text-[#30252a] sm:gap-6">
             <Link to="/" hash="colecao" aria-label="Buscar produtos" className="rounded-full p-2 hover:bg-[#fff1f5]"><Search size={26} strokeWidth={1.5} /></Link>
             <Link to="/compras" aria-label="Minha conta" className="rounded-full p-2 hover:bg-[#fff1f5]"><UserRound size={26} strokeWidth={1.5} /></Link>
