@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Heart, Lock, Minus, Plus, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
+import { ArrowRight, Heart, Lock, Minus, Plus, ShieldCheck, ShoppingBag, Truck, Menu, Search, UserRound } from "lucide-react";
 import { toast } from "sonner";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct, products } from "@/lib/products";
@@ -49,13 +49,15 @@ function ProductPage() {
   return (
     <main className="min-h-screen bg-[#fff9fb] text-[#46343d]">
       <div className="bg-[#46343d] px-4 py-2 text-center text-[9px] font-medium uppercase tracking-[.2em] text-white">Life Pandora · Descubra sua próxima peça favorita</div>
-      <header className="sticky top-0 z-30 border-b border-[#f0dce5] bg-[#fff9fb]/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <Link to="/" className="font-serif text-xl font-semibold tracking-[.16em] sm:text-2xl">LIFE <span className="text-[#b77f98]">PANDORA</span></Link>
-          <Link to="/carrinho" aria-label="Abrir sacola" className="relative rounded-full p-2 transition hover:bg-[#f9e8ef]">
-            <ShoppingBag size={20} />
-            {count > 0 && <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#46343d] px-1 text-[9px] text-white">{count}</span>}
-          </Link>
+      <header className="sticky top-0 z-30 border-b border-[#f0dce5] bg-white/95 backdrop-blur">
+        <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 sm:h-[88px] sm:px-8">
+          <Link to="/" aria-label="Início" className="rounded-full p-2 text-[#30252a] hover:bg-[#fff1f5]"><Menu size={27} strokeWidth={1.5} /></Link>
+          <Link to="/" className="font-sans text-[25px] font-semibold tracking-[-.045em] text-[#241c20] sm:text-[34px]">LIFE <span className="font-normal tracking-[-.055em]">PANDORA</span></Link>
+          <div className="flex items-center gap-3 text-[#30252a] sm:gap-6">
+            <Link to="/" hash="colecao" aria-label="Buscar produtos" className="rounded-full p-2 hover:bg-[#fff1f5]"><Search size={26} strokeWidth={1.5} /></Link>
+            <Link to="/compras" aria-label="Minha conta" className="rounded-full p-2 hover:bg-[#fff1f5]"><UserRound size={26} strokeWidth={1.5} /></Link>
+            <Link to="/carrinho" aria-label="Sacola" className="rounded-full p-2 hover:bg-[#fff1f5]"><ShoppingBag size={27} strokeWidth={1.5} /></Link>
+          </div>
         </div>
       </header>
 
