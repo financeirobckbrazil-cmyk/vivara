@@ -24,7 +24,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "https://pandoraeg.com/cdn/shop/files/PandoraSnakechainsilverbraceletwithroundclasp590728_1_93f606de-fc70-4a8b-85b1-e704be2467b4.jpg?v=1765218041&width=2362",
+    "image": "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200",
     "link": "https://br.pandora.net/pt/lancamentos-red/pulseira-de-malha-brilhante-com-fecho-de-corac%C3%A3o-/534971C01.html"
   },
   {
@@ -74,7 +74,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "https://pandora.lucerneluxe.com/cdn/shop/products/HIGH_RGB_596268_RGB_1024x1024%402x.jpg?v=1599469372",
+    "image": "https://image.rakuten.co.jp/onemore/cabinet/002/pd-590728-d.jpg",
     "link": "#"
   },
   {
@@ -84,7 +84,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "https://pandoraeg.com/cdn/shop/files/PandoraSnakechainsilverbraceletwithroundclasp590728_1_93f606de-fc70-4a8b-85b1-e704be2467b4.jpg?v=1765218041&width=2362",
+    "image": "https://www.giftandwrap.co.uk/cdn/shop/files/1603205960-49831400.jpg?v=1760453284&width=3840",
     "link": "#"
   },
   {
@@ -94,7 +94,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "https://pandora.lucerneluxe.com/cdn/shop/products/HIGH_RGB_596268_RGB_1024x1024%402x.jpg?v=1599469372",
+    "image": "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200",
     "link": "#"
   },
   {
@@ -104,10 +104,12 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "https://pandoraeg.com/cdn/shop/files/PandoraSnakechainsilverbraceletwithroundclasp590728_1_93f606de-fc70-4a8b-85b1-e704be2467b4.jpg?v=1765218041&width=2362",
+    "image": "https://image.rakuten.co.jp/onemore/cabinet/002/pd-590728-d.jpg",
     "link": "#"
   }
 ];
+
+const imageFallback = (name: string) => /pulseira|bracelete/i.test(name) ? "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200" : /anel/i.test(name) ? "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362" : /colar/i.test(name) ? "https://www.marcolino.pt/content/uploads/maingallery/697976_17087744779.jpg" : "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
 
 function HomePage() {
   const { add } = useCart();
@@ -145,7 +147,7 @@ function HomePage() {
           <div className="relative mx-auto flex h-[340px] w-full max-w-[500px] items-center justify-center md:h-[500px]">
             <div className="absolute h-[270px] w-[270px] rounded-full border border-white/80 md:h-[370px] md:w-[370px]" />
             <div className="absolute h-[220px] w-[220px] rounded-full bg-white/50 blur-2xl md:h-[300px] md:w-[300px]" />
-            <div className="relative z-10 h-[320px] w-[320px] drop-shadow-xl md:h-[460px] md:w-[460px]"><img src={products[0].image} alt={products[0].name} className="h-full w-full object-contain" /></div>
+            <div className="relative z-10 h-[320px] w-[320px] drop-shadow-xl md:h-[460px] md:w-[460px]"><img src={products[0].image} alt={products[0].name} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = imageFallback(products[0].name); }} className="h-full w-full object-contain" /></div>
             <span className="absolute bottom-5 right-4 font-serif text-sm italic text-[#987b89]">Brilho que conta histórias</span>
           </div>
         </div>
@@ -164,7 +166,7 @@ function HomePage() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
           {visibleProducts.map((product) => <article key={product.id} className="group overflow-hidden border border-[#f0dce5] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(45,38,30,0.09)]">
             <div className="relative aspect-[4/5] overflow-hidden bg-[#fff3f7]">
-              <img src={product.image} alt={product.name} loading="lazy" className="h-full w-full object-contain p-0 transition-transform duration-700 ease-out group-hover:scale-[1.08]" />
+              <img src={product.image} alt={product.name} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = imageFallback(product.name); }} className="h-full w-full object-contain p-0 transition-transform duration-700 ease-out group-hover:scale-[1.08]" />
               <span className="absolute left-3 top-3 bg-white/90 px-2.5 py-1.5 text-[9px] uppercase tracking-[.16em] text-[#8b7781]">Finalização em platina</span>
               <button aria-label={`Favoritar ${product.name}`} className="absolute right-3 top-3 rounded-full bg-white/90 p-2.5 text-[#8b7781] shadow-sm transition hover:text-[#a56b76]"><Heart size={15} /></button>
             </div>
@@ -187,7 +189,7 @@ function HomePage() {
 
       <section id="diferencial" className="bg-[#f9e8ef] px-6 py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
-          <div className="mx-auto h-[280px] w-[280px] md:h-[380px] md:w-[380px]"><img src={products.find((p) => p.category === "Colares")!.image} alt={products.find((p) => p.category === "Colares")!.name} loading="lazy" className="h-full w-full object-contain mix-blend-multiply" /></div>
+          <div className="mx-auto h-[280px] w-[280px] md:h-[380px] md:w-[380px]"><img src={products.find((p) => p.category === "Colares")!.image} alt={products.find((p) => p.category === "Colares")!.name} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = imageFallback("Colar"); }} className="h-full w-full object-contain mix-blend-multiply" /></div>
           <div><p className="text-[10px] uppercase tracking-[.25em] text-[#b58b9d]">Inovação e cuidado</p><h2 className="mt-3 font-serif text-3xl leading-tight md:text-5xl">O diferencial da coleção</h2><p className="mt-6 text-sm leading-7 text-[#806a75]">As peças são apresentadas com uma liga metálica exclusiva da Pandora e revestimento em platina, desenvolvidos para oferecer brilho duradouro, resistência à oxidação e propriedades hipoalergênicas.</p><p className="mt-4 text-sm leading-7 text-[#806a75]">Uma coleção que une design contemporâneo, delicadeza e personalidade, trazendo novas possibilidades para quem ama joias e acessórios sofisticados.</p><a href="#colecao" className="mt-8 inline-flex items-center gap-3 border-b border-[#46343d] pb-2 text-[10px] uppercase tracking-[.2em]">Explore as peças <ArrowRight size={14} /></a></div>
         </div>
       </section>
