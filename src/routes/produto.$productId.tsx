@@ -20,6 +20,7 @@ function ProductPage() {
   const [activeImage, setActiveImage] = useState(0);
   const [favorite, setFavorite] = useState(false);
   const [selectedCharms, setSelectedCharms] = useState<Record<string, number>>({});
+  const [charmSelectionOrder, setCharmSelectionOrder] = useState<string[]>([]);
   const [selectedAddons, setSelectedAddons] = useState<Record<string, boolean>>({});
 
   if (!product) {
@@ -53,8 +54,15 @@ function ProductPage() {
   };
 
   const addSelectedCharms = () => {
+    const freeByCharm: Record<string, number> = {};
+    charmSelectionOrder.forEach((id, index) => {
+      if ((index + 1) % 3 === 0) freeByCharm[id] = (freeByCharm[id] ?? 0) + 1;
+    });
     Object.entries(selectedCharms).forEach(([id, qty]) => {
-      if (qty > 0) addWithBonus(id, "Único", qty);
+      if (qty > 0) {
+        const bonusQty = freeByCharm[id] ?? 0;
+        addWithBonus(id, "Único", qty - bonusQty, bonusQty);
+      }
     });
   };
 
@@ -164,7 +172,7 @@ function ProductPage() {
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-[.16em] text-[#a45f82]">Edição especial de Natal</p>
                   <h2 className="mt-1 font-serif text-lg text-[#46343d]">Escolha seus charms natalinos</h2>
-                  <p className="mt-1 text-[10px] text-[#806a75]">Detalhes festivos para celebrar o Natal. Compre 1 e ganhe outro igual grátis.</p>
+                  <p className="mt-1 text-[10px] text-[#806a75]">Selecione 2 charms e o 3º que você escolher sai grátis. A cada 3 selecionados, 1 é grátis.</p>
                 </div>
                 <span className="shrink-0 rounded-full bg-[#fff1f6] px-2.5 py-1 text-[9px] font-semibold text-[#a45f82]">4 opções</span>
               </div>
@@ -178,11 +186,11 @@ function ProductPage() {
                     <div className="p-2">
                       <p className="min-h-8 text-[10px] leading-4 text-[#46343d]">{charm.name}</p>
                       <p className="mt-1 text-xs font-semibold text-[#46343d]">{formatBRL(charm.price)}</p>
-                      <p className="mt-0.5 text-[8px] font-semibold text-[#a45f82]">+ 1 grátis</p>
+                      <p className="mt-0.5 text-[8px] font-semibold text-[#a45f82]">3º selecionado grátis</p>
                       <div className="mt-2 flex items-center justify-between">
-                        <button type="button" aria-label={`Diminuir ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.max(0, qty - 1) }))} className="h-7 w-7 rounded-full border border-[#e8cbd8] text-sm text-[#694b5b]">−</button>
+                        <button type="button" aria-label={`Diminuir ${charm.name}`} onClick={() => { if (qty > 0) { setSelectedCharms((s) => ({ ...s, [charm.id]: Math.max(0, qty - 1) })); setCharmSelectionOrder((order) => { const index = order.lastIndexOf(charm.id); return index >= 0 ? [...order.slice(0, index), ...order.slice(index + 1)] : order; }); } }} className="h-7 w-7 rounded-full border border-[#e8cbd8] text-sm text-[#694b5b]">−</button>
                         <span className="text-[10px] font-semibold tabular-nums">{qty}</span>
-                        <button type="button" aria-label={`Adicionar ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.min(10, qty + 1) }))} className="h-7 w-7 rounded-full border border-[#e8cbd8] text-sm text-[#694b5b]">+</button>
+                        <button type="button" aria-label={`Adicionar ${charm.name}`} onClick={() => { if (qty < 10) { setSelectedCharms((s) => ({ ...s, [charm.id]: qty + 1 })); setCharmSelectionOrder((order) => [...order, charm.id]); } }} className="h-7 w-7 rounded-full border border-[#e8cbd8] text-sm text-[#694b5b]">+</button>
                       </div>
                     </div>
                   </div>;
