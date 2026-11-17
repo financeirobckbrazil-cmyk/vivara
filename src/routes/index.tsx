@@ -1,11 +1,4 @@
 import { useMemo, useState } from "react";
-import imgPulseira1 from "@/assets/pulseira-1.png.asset.json";
-import imgPulseira2 from "@/assets/pulseira-2.png.asset.json";
-import imgPulseira3 from "@/assets/pulseira-3.png.asset.json";
-import imgPulseira4 from "@/assets/pulseira-4.png.asset.json";
-import imgPulseira5 from "@/assets/pulseira-5.png.asset.json";
-import imgRing1 from "@/assets/ring-coracao.jpg";
-import imgRing2 from "@/assets/ring-coroa.jpg";
 
 import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Menu, ShoppingBag, Sparkles, ArrowRight, Search, UserRound } from "lucide-react";
@@ -31,7 +24,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": imgPulseira1.url,
+    "image": "/images/products/bracelet-1.webp",
     "link": "https://br.pandora.net/pt/lancamentos-red/pulseira-de-malha-brilhante-com-fecho-de-corac%C3%A3o-/534971C01.html"
   },
   {
@@ -41,7 +34,7 @@ const products: Product[] = [
     "category": "Anéis",
     "price": "R$ 35,78",
     "kind": "flower",
-    "image": imgRing1,
+    "image": "/images/products/ring-1.webp",
     "link": "https://us.pandora.net/en/rings/statement-rings/disney-mulan-cherry-blossom-ring/135027C01.html"
   },
   {
@@ -51,7 +44,7 @@ const products: Product[] = [
     "category": "Anéis",
     "price": "R$ 35,78",
     "kind": "ring",
-    "image": imgRing2,
+    "image": "/images/products/ring-2.webp",
     "link": "https://us.pandora.net/en/rings/statement-rings/tiara-stars-ring/134946C01.html"
   },
   {
@@ -61,7 +54,7 @@ const products: Product[] = [
     "category": "Colares",
     "price": "R$ 35,78",
     "kind": "necklace",
-    "image": "https://www.thbaker.co.uk/media/catalog/product/cache/559903688dc9fe82c7c6365725123978/1/7/17-12-25137676_pandora_03.jpg",
+    "image": "/images/products/necklace-1.webp",
     "link": "https://us.pandora.net/en/necklaces/chain-necklaces/pandora-moments-snake-chain-necklace--platinum-plated/314563C00.html"
   },
   {
@@ -71,7 +64,7 @@ const products: Product[] = [
     "category": "Colares",
     "price": "R$ 35,78",
     "kind": "necklace",
-    "image": "https://www.franciscoortuno.es/img/producto/2000x2000/collar-pandora-590200-45-cadena-cl-sica-cable-24609-1.jpeg",
+    "image": "/images/products/necklace-2.webp",
     "link": "https://us.pandora.net/en/necklaces/chain-necklaces/heart-clasp-sparkling-mesh-necklace/335080C01.html"
   },
   {
@@ -81,7 +74,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": imgPulseira2.url,
+    "image": "/images/products/bracelet-2.webp",
     "link": "#"
   },
   {
@@ -91,7 +84,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": imgPulseira3.url,
+    "image": "/images/products/bracelet-3.webp",
     "link": "#"
   },
   {
@@ -101,7 +94,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": imgPulseira4.url,
+    "image": "/images/products/bracelet-4.webp",
     "link": "#"
   },
   {
@@ -111,7 +104,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": imgPulseira5.url,
+    "image": "/images/products/bracelet-5.webp",
     "link": "#"
   }
 ];
