@@ -14,7 +14,7 @@ const createSchema = z.object({
 });
 
 export const createPixPayment = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => createSchema.parse(d))
+  .validator((d: unknown) => createSchema.parse(d))
   .handler(async ({ data: raw }) => {
     const name = raw.customer.name.trim();
     const email = raw.customer.email.trim().toLowerCase();
@@ -84,7 +84,7 @@ export const createPixPayment = createServerFn({ method: "POST" })
   });
 
 export const checkPixStatus = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z
       .object({ externalId: z.union([z.string(), z.number()]).transform((v) => String(v)) })
       .refine((v) => v.externalId.length > 0, { message: "ID inválido." })
