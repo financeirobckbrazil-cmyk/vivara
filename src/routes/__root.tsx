@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { CartProvider } from "@/lib/cart";
 import { Toaster } from "sonner";
-import "../styles.css";
+import "./styles.css";
 
 export const Route = createRootRoute({
   head: () => ({
