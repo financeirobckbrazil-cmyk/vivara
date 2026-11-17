@@ -2,10 +2,9 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Minus, Plus, X, Lock } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct } from "@/lib/products";
-import logoLife from "@/assets/life-vivara-logo.png";
 
 export const Route = createFileRoute("/carrinho")({
-  head: () => ({ meta: [{ title: "Minha Sacola — Life Vivara" }] }),
+  head: () => ({ meta: [{ title: "Minha Sacola — Life Pandora" }] }),
   component: CartPage,
 });
 
@@ -16,8 +15,7 @@ function CartPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="bg-primary px-6 sm:px-10 py-5 flex items-center justify-between">
-        <span className="font-serif text-2xl sm:text-3xl tracking-[0.2em] text-brand font-semibold">VIVARA</span>
-        <img src={logoLife} alt="Life" className="h-8 sm:h-10 w-auto" />
+        <span className="font-serif text-2xl sm:text-3xl tracking-[0.2em] text-brand font-semibold">LIFE <span className="text-[#a58a70]">PANDORA</span></span>
       </header>
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-8">
