@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Heart, Lock, Minus, Plus, ShieldCheck, ShoppingBag, Truck, Menu, Search, UserRound } from "lucide-react";
+import { ArrowRight, Heart, Lock, Minus, Plus, ShieldCheck, ShoppingBag, Truck, Menu, Search, UserRound, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct, products } from "@/lib/products";
@@ -13,12 +13,13 @@ export const Route = createFileRoute("/produto/$productId")({
 function ProductPage() {
   const { productId } = Route.useParams();
   const product = getProduct(productId);
-  const { add, count } = useCart();
+  const { add, addWithBonus, count } = useCart();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("Único");
   const [activeImage, setActiveImage] = useState(0);
   const [favorite, setFavorite] = useState(false);
+  const [selectedCharms, setSelectedCharms] = useState<Record<string, number>>({});
 
   if (!product) {
     return (
@@ -31,6 +32,8 @@ function ProductPage() {
   }
 
   const isRing = /anel/i.test(product.name);
+  const isBracelet = /pulseira/i.test(product.name);
+  const charmOptions = products.filter((item) => item.name.toLowerCase().startsWith("charm"));
   const sizes = isRing ? ["16", "18", "20", "22"] : ["Único"];
   const images = [product.image];
   const related = products.filter((item) => item.id.startsWith("pandora-") && item.id !== product.id).slice(0, 4);
@@ -105,6 +108,37 @@ function ProductPage() {
                 <button onClick={() => setQuantity((q) => Math.min(10, q + 1))} aria-label="Aumentar quantidade" className="h-full px-4 hover:bg-[#f9edf2]"><Plus size={14} /></button>
               </div>
             </div>
+
+            {isBracelet && <section className="mt-8 rounded-2xl border border-[#e8cbd8] bg-white p-4 sm:p-5">
+              <div className="flex items-start gap-3">
+                <span className="rounded-full bg-[#f9e8ef] p-2 text-[#a45f82]"><Sparkles size={17} /></span>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[.18em] text-[#a45f82]">Oferta especial para quem compra pulseira</p>
+                  <h2 className="mt-1 font-serif text-xl text-[#46343d]">Compre 1 charm e ganhe outro grátis!</h2>
+                  <p className="mt-2 text-xs leading-5 text-[#806a75]">Escolha seus charms abaixo. A cada unidade paga, você recebe mais 1 unidade do mesmo charm como bônus. O brinde não será cobrado.</p>
+                </div>
+              </div>
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                {charmOptions.map((charm) => {
+                  const qty = selectedCharms[charm.id] ?? 0;
+                  return <div key={charm.id} className={`overflow-hidden rounded-xl border ${qty > 0 ? "border-[#b77f98] ring-1 ring-[#d7a9bd]" : "border-[#f0dce5]"}`}>
+                    <div className="aspect-square bg-[#fff3f7]"><img src={charm.image} alt={charm.name} loading="lazy" className="h-full w-full object-contain p-2" /></div>
+                    <div className="p-3">
+                      <p className="min-h-9 text-xs leading-4 text-[#46343d]">{charm.name}</p>
+                      <p className="mt-1 text-sm font-semibold text-[#46343d]">{formatBRL(charm.price)}</p>
+                      <p className="mt-1 text-[9px] font-semibold uppercase tracking-wide text-[#a45f82]">+ 1 igual grátis por unidade</p>
+                      <div className="mt-3 flex items-center justify-between">
+                        <button type="button" aria-label={`Diminuir ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.max(0, qty - 1) }))} className="h-8 w-8 rounded-full border border-[#e8cbd8] text-[#694b5b]">−</button>
+                        <span className="text-xs font-semibold tabular-nums">{qty}</span>
+                        <button type="button" aria-label={`Adicionar ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.min(10, qty + 1) }))} className="h-8 w-8 rounded-full border border-[#e8cbd8] text-[#694b5b]">+</button>
+                      </div>
+                      {qty > 0 && <p className="mt-2 text-[10px] font-medium text-[#a45f82]">Você leva {qty * 2}: {qty} pagos + {qty} grátis</p>}
+                    </div>
+                  </div>;
+                })}
+              </div>
+              <p className="mt-4 rounded-lg bg-[#fff3f7] px-3 py-2 text-[10px] leading-4 text-[#806a75]">Selecione a quantidade de cada charm. Os bônus serão aplicados automaticamente na sacola e no checkout.</p>
+            </section>}
 
             <div className="mt-7 grid gap-3">
               <button onClick={buyNow} className="flex h-14 items-center justify-center gap-3 bg-[#46343d] px-6 text-[10px] font-semibold uppercase tracking-[.2em] text-white transition hover:bg-[#51483f]">Comprar agora <ArrowRight size={15} /></button>
