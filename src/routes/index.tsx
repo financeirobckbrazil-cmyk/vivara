@@ -24,7 +24,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "/images/products/bracelet-1.webp",
+    "image": "https://www.mostert-juweliers.nl/media/catalog/product/cache/1/thumbnail/1200x1200/5/9/pandora-moments-594594c00-snake-chain-zilveren-armband-met-hartje.png",
     "link": "https://br.pandora.net/pt/lancamentos-red/pulseira-de-malha-brilhante-com-fecho-de-corac%C3%A3o-/534971C01.html"
   },
   {
@@ -34,7 +34,7 @@ const products: Product[] = [
     "category": "Anéis",
     "price": "R$ 35,78",
     "kind": "flower",
-    "image": "/images/products/ring-1.webp",
+    "image": "https://pandora.lucerneluxe.com/cdn/shop/files/HIGH_RGB_193801C01_RGB_1024x1024%402x.jpg?v=1749657602",
     "link": "https://us.pandora.net/en/rings/statement-rings/disney-mulan-cherry-blossom-ring/135027C01.html"
   },
   {
@@ -44,7 +44,7 @@ const products: Product[] = [
     "category": "Anéis",
     "price": "R$ 35,78",
     "kind": "ring",
-    "image": "/images/products/ring-2.webp",
+    "image": "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362",
     "link": "https://us.pandora.net/en/rings/statement-rings/tiara-stars-ring/134946C01.html"
   },
   {
@@ -54,7 +54,7 @@ const products: Product[] = [
     "category": "Colares",
     "price": "R$ 35,78",
     "kind": "necklace",
-    "image": "/images/products/necklace-1.webp",
+    "image": "https://pandora-eshop.jo/cdn/shop/files/WEB_393099C01_RGB.png?v=1754776761&width=2048",
     "link": "https://us.pandora.net/en/necklaces/chain-necklaces/pandora-moments-snake-chain-necklace--platinum-plated/314563C00.html"
   },
   {
@@ -64,7 +64,7 @@ const products: Product[] = [
     "category": "Colares",
     "price": "R$ 35,78",
     "kind": "necklace",
-    "image": "/images/products/necklace-2.webp",
+    "image": "https://laatukoru.fi/cdn/shop/files/Pandora_Timeless_Elevated_Heart_kaulakoru_hopea_398425C0_45.jpg?v=1747904947",
     "link": "https://us.pandora.net/en/necklaces/chain-necklaces/heart-clasp-sparkling-mesh-necklace/335080C01.html"
   },
   {
@@ -74,7 +74,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "/images/products/bracelet-2.webp",
+    "image": "https://pandora.lucerneluxe.com/cdn/shop/products/HIGH_RGB_596268_RGB_1024x1024%402x.jpg?v=1599469372",
     "link": "#"
   },
   {
@@ -84,7 +84,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "/images/products/bracelet-3.webp",
+    "image": "https://pandoraeg.com/cdn/shop/files/PandoraSnakechainsilverbraceletwithroundclasp590728_1_93f606de-fc70-4a8b-85b1-e704be2467b4.jpg?v=1765218041&width=2362",
     "link": "#"
   },
   {
@@ -94,7 +94,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "/images/products/bracelet-4.webp",
+    "image": "https://www.quickjewels.nl/media/fit?background=255%2C255%2C255&height=1200&type=jpeg&url=https%3A%2F%2Fwww.quickjewels.nl%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fi%2Fhigh_591469c01_rgb_1.jpg&width=1200",
     "link": "#"
   },
   {
@@ -104,7 +104,7 @@ const products: Product[] = [
     "category": "Pulseiras",
     "price": "R$ 35,78",
     "kind": "bracelet",
-    "image": "/images/products/bracelet-5.webp",
+    "image": "https://www.mostert-juweliers.nl/media/catalog/product/cache/1/thumbnail/1200x1200/5/9/pandora-moments-594594c00-snake-chain-zilveren-armband-met-hartje.png",
     "link": "#"
   }
 ];
