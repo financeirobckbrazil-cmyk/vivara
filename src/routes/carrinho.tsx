@@ -58,12 +58,13 @@ function CartPage() {
                           Tamanho: {item.size}
                         </div>
                         <div className="mt-3 flex items-center gap-3">
-                          <span className="text-sm text-primary">Qtd:</span>
+                          <span className="text-sm text-primary">Qtd paga:</span>
                           <div className="flex items-center border border-border rounded-sm">
                             <button onClick={() => setQty(item.id, item.size, item.qty - 1)} aria-label="Diminuir" className="p-2 text-foreground"><Minus className="h-3 w-3" /></button>
                             <span className="px-3 text-sm w-8 text-center">{item.qty}</span>
                             <button onClick={() => setQty(item.id, item.size, item.qty + 1)} aria-label="Aumentar" className="p-2 text-foreground"><Plus className="h-3 w-3" /></button>
                           </div>
+                          {(item.bonusQty ?? 0) > 0 && <p className="mt-2 text-xs font-medium text-[#a45f82]">+ {item.bonusQty} charm(s) de bônus grátis</p>}
                         </div>
                         <div className="mt-3 flex items-baseline gap-3">
                           {product.oldPrice && <span className="text-muted-foreground line-through text-sm">{formatBRL(product.oldPrice)}</span>}
