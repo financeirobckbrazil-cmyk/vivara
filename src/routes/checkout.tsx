@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Lock, Copy, Loader2, Sparkles, ShieldCheck, Check } from "lucide-react";
+import { Lock, Copy, Loader2, Sparkles, ShieldCheck, Check, Search, UserRound, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct } from "@/lib/products";
 import { createPixPayment, checkPixStatus } from "@/lib/pingupag.functions";
@@ -191,10 +191,14 @@ function CheckoutPage() {
       <div className="bg-[#211b18] px-4 py-2 text-center text-[9px] font-medium tracking-[0.2em] text-white/90 uppercase">
         Finalização segura · Seus dados protegidos
       </div>
-      <header className="border-b border-[#eee7df] bg-white px-5 py-4 sm:px-10">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <Link to="/" className="font-serif text-xl font-semibold tracking-[0.18em] text-[#28221e] sm:text-2xl">LIFE <span className="text-[#b77f98]">PANDORA</span></Link>
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#f6f3ef] px-3 py-2 text-[10px] font-medium text-[#63584e]"><ShieldCheck className="h-3.5 w-3.5" /> Ambiente protegido</span>
+      <header className="border-b border-[#f0dce5] bg-white px-5 sm:px-8">
+        <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between sm:h-[88px]">
+          <Link to="/" className="font-sans text-[25px] font-semibold tracking-[-.045em] text-[#241c20] sm:text-[34px]">LIFE <span className="font-normal tracking-[-.055em]">PANDORA</span></Link>
+          <div className="flex items-center gap-3 text-[#30252a] sm:gap-6">
+            <Link to="/" hash="colecao" aria-label="Buscar produtos" className="rounded-full p-2 hover:bg-[#fff1f5]"><Search className="h-6 w-6" strokeWidth={1.5} /></Link>
+            <Link to="/compras" aria-label="Minha conta" className="rounded-full p-2 hover:bg-[#fff1f5]"><UserRound className="h-6 w-6" strokeWidth={1.5} /></Link>
+            <Link to="/carrinho" aria-label="Sacola" className="rounded-full p-2 hover:bg-[#fff1f5]"><ShoppingBag className="h-7 w-7" strokeWidth={1.5} /></Link>
+          </div>
         </div>
       </header>
 
