@@ -259,14 +259,14 @@ function HomePage() {
             </div>
             <div className="flex min-h-[190px] flex-col p-4 md:p-5">
               <p className="text-[9px] uppercase tracking-[.18em] text-[#9b8d7e]">{product.category}</p>
-              <h3 className="mt-2 min-h-[44px] font-serif text-base leading-5 md:text-[17px]">{product.name}</h3>
+              <button type="button" onClick={() => navigate({ to: "/produto/$productId", params: { productId: `pandora-${product.id}` } })} className="mt-2 min-h-[44px] text-left font-serif text-base leading-5 hover:underline md:text-[17px]">{product.name}</button>
               <p className="mt-2 flex-1 text-[11px] leading-5 text-[#77716b]">{product.description}</p>
               <div className="mt-5 flex flex-col gap-3 border-t border-[#eeeae5] pt-4">
                 <div>
                   <p className="text-[9px] uppercase tracking-[.16em] text-[#9b8d7e]">Preço anunciado</p>
                   <p className="mt-1 text-xl font-semibold tracking-tight text-[#242321]">{product.price}</p>
                 </div>
-                <button type="button" onClick={() => { add(`pandora-${product.id}`, "Único"); navigate({ to: "/checkout" }); }} className="inline-flex w-full items-center justify-center gap-2 bg-[#242321] px-4 py-3 text-[10px] font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#62584e]">Comprar agora <ArrowRight size={13} /></button>
+                <button type="button" onClick={() => navigate({ to: "/produto/$productId", params: { productId: `pandora-${product.id}` } })} className="inline-flex w-full items-center justify-center gap-2 bg-[#242321] px-4 py-3 text-[10px] font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#62584e]">Ver detalhes <ArrowRight size={13} /></button>
               </div>
             </div>
           </article>)}
