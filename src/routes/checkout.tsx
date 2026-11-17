@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Lock, Copy, Loader2 } from "lucide-react";
+import { Lock, Copy, Loader2, Sparkles, ShieldCheck, Check } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct } from "@/lib/products";
 import { createPixPayment, checkPixStatus } from "@/lib/pingupag.functions";
@@ -27,16 +27,22 @@ const BUMPS = [
   {
     id: "flanela-prata",
     eyebrow: "CUIDADO ESPECIAL",
-    title: "Flanela de cuidado para suas joias",
-    desc: "Um complemento prático para ajudar a manter o brilho das suas peças.",
+    title: "Flanela dupla para polimento",
+    desc: "Ajuda a manter suas joias limpas e com aparência brilhante no dia a dia.",
     price: 14.87,
+    image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwf5bdc892/productimages/main_rect_center/CARE_KIT_POLISHING_CLOTH_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
+    imageAlt: "Flanela dupla para polimento de joias Pandora",
+    tag: "PEQUENO CUIDADO, GRANDE DIFERENÇA",
   },
   {
-    id: "estojo-viagem",
-    eyebrow: "MAIS PRATICIDADE",
-    title: "Estojo compacto para guardar suas joias",
-    desc: "Guarde e transporte suas peças com mais organização no dia a dia e em viagens.",
+    id: "kit-limpeza",
+    eyebrow: "MAIS ESCOLHIDO",
+    title: "Kit de limpeza para joias",
+    desc: "Conjunto de cuidado com solução de limpeza, escova macia e flanela para suas peças.",
     price: 49.87,
+    image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw6ea1f0c9/productimages/main_rect_center/CARE_KIT_JAR_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
+    imageAlt: "Kit de limpeza para joias Pandora",
+    tag: "CUIDE DAS SUAS PEÇAS",
   },
 ];
 
@@ -182,21 +188,29 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <header className="bg-primary px-6 sm:px-10 py-5 flex items-center justify-between">
-        <span className="font-serif text-2xl sm:text-3xl tracking-[0.2em] text-brand font-semibold">VIVARA</span>
-        <img src={logoLife} alt="Life" className="h-8 sm:h-10 w-auto" />
+    <div className="min-h-screen bg-[#faf8f5] flex flex-col">
+      <div className="bg-[#211b18] px-4 py-2 text-center text-[9px] font-medium tracking-[0.2em] text-white/90 uppercase">
+        Finalização segura · Seus dados protegidos
+      </div>
+      <header className="border-b border-[#eee7df] bg-white px-5 py-4 sm:px-10">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <Link to="/" className="font-serif text-xl tracking-[0.18em] text-[#28221e] sm:text-2xl">LIFE <span className="text-[#a58a70]">VIVARA</span></Link>
+          <img src={logoLife} alt="Life" className="h-8 w-auto sm:h-10" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#f6f3ef] px-3 py-2 text-[10px] font-medium text-[#63584e]"><ShieldCheck className="h-3.5 w-3.5" /> Ambiente protegido</span>
+        </div>
       </header>
 
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-8">
-        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border pb-5">
-          <div>
-            <p className="text-[10px] font-semibold tracking-[0.2em] text-primary uppercase">Finalização segura</p>
-            <h1 className="mt-1 text-foreground text-xl sm:text-2xl tracking-[0.15em] font-medium">CHECKOUT</h1>
-            <p className="text-primary text-sm mt-1">{count} {count === 1 ? "item" : "itens"} na sacola</p>
-          </div>
-          <div className="flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs text-muted-foreground">
-            <Lock className="h-3.5 w-3.5" /> Seus dados protegidos
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-7 sm:py-9">
+        <div className="mb-6 overflow-hidden rounded-xl bg-gradient-to-r from-[#f2ece5] via-[#faf7f3] to-[#eee5dc] px-5 py-6 sm:px-8 sm:py-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.24em] text-[#9a785d] uppercase"><Sparkles className="h-3.5 w-3.5" /> Falta pouco para sua joia chegar</p>
+              <h1 className="mt-2 font-serif text-2xl tracking-[0.08em] text-[#28221e] sm:text-3xl">Finalizar pedido</h1>
+              <p className="mt-2 text-xs text-[#74685d]">{count} {count === 1 ? "item selecionado" : "itens selecionados"} · Revise seus dados e escolha a entrega</p>
+            </div>
+            <div className="flex items-center gap-2 rounded-full border border-white/80 bg-white/75 px-4 py-2.5 text-xs text-[#63584e] shadow-sm">
+              <Lock className="h-3.5 w-3.5" /> Checkout protegido
+            </div>
           </div>
         </div>
         <div className="mt-5 grid grid-cols-3 gap-2">
@@ -212,7 +226,7 @@ function CheckoutPage() {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_360px]">
+        <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
           <div className="space-y-6">
             {/* Mini items list */}
             <ul className="space-y-3">
@@ -394,7 +408,7 @@ function CheckoutPage() {
           </div>
 
           {/* RESUMO */}
-          <aside className="border border-border bg-card rounded-md p-6 h-fit space-y-5">
+          <aside className="sticky top-5 rounded-xl border border-[#e8e0d8] bg-white p-5 shadow-[0_12px_40px_rgba(46,35,25,0.06)] sm:p-6 h-fit space-y-5">
             <h2 className="text-foreground text-sm tracking-[0.15em] font-semibold">RESUMO DO PEDIDO</h2>
 
             <div className="space-y-3 text-sm pb-5 border-b border-border">
@@ -414,38 +428,45 @@ function CheckoutPage() {
               )}
             </div>
 
-            <div className="space-y-3">
-              <div className="rounded-sm bg-secondary/60 p-4">
-                <p className="text-[10px] font-semibold tracking-[0.18em] text-primary uppercase">Complete sua experiência</p>
-                <p className="mt-1 text-sm font-medium text-foreground">Ofertas especiais para acompanhar suas joias</p>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Adicione ao pedido se desejar. As ofertas são opcionais.</p>
+            <div className="space-y-4">
+              <div className="rounded-xl bg-gradient-to-br from-[#29211d] to-[#514034] p-4 text-white shadow-sm">
+                <p className="flex items-center gap-2 text-[9px] font-semibold tracking-[0.22em] text-[#e8cdb2] uppercase"><Sparkles className="h-3.5 w-3.5" /> Um mimo para suas joias</p>
+                <p className="mt-2 font-serif text-lg leading-snug">Aproveite para cuidar ainda melhor das suas peças</p>
+                <p className="mt-1 text-xs leading-relaxed text-white/75">Adicionais exclusivos para completar seu pedido. Você escolhe se deseja incluir.</p>
               </div>
-              {BUMPS.map((b) => (
+              {BUMPS.map((b, index) => (
                 <label
                   key={b.id}
-                  className={`relative flex gap-3 rounded-md border p-4 cursor-pointer transition-all ${bumps[b.id] ? "border-foreground bg-secondary/40 shadow-sm" : "border-border bg-background hover:border-primary"}`}
+                  className={`group relative block cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${bumps[b.id] ? "border-[#9a785d] ring-2 ring-[#c9ad91]/30" : "border-[#e8e0d8] hover:border-[#c9ad91]"}`}
                 >
-                  <input
-                    type="checkbox"
-                    checked={!!bumps[b.id]}
-                    onChange={(e) => setBumps({ ...bumps, [b.id]: e.target.checked })}
-                    className="mt-1 h-4 w-4 shrink-0 accent-foreground"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-[9px] font-semibold tracking-[0.16em] text-primary">{b.eyebrow}</span>
-                      <span className="rounded-full bg-secondary px-2 py-0.5 text-[9px] text-primary">Oferta opcional</span>
-                    </div>
-                    <div className="mt-2 text-sm font-semibold leading-snug text-foreground">{b.title}</div>
-                    <div className="mt-1 text-xs leading-relaxed text-muted-foreground">{b.desc}</div>
-                    <div className="mt-3 flex flex-wrap items-baseline gap-2">
-                      <span className="text-base font-semibold text-foreground">{formatBRL(b.price)}</span>
-                      <span className="text-[10px] text-muted-foreground">adicionar ao pedido</span>
-                    </div>
+                  <div className="relative flex h-28 items-center justify-center overflow-hidden bg-[#f7f5f2] sm:h-32">
+                    <img src={b.image} alt={b.imageAlt} loading="lazy" className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
+                    <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[8px] font-semibold tracking-[0.13em] text-[#77624f] shadow-sm">{b.eyebrow}</span>
+                    {index === 1 && <span className="absolute right-3 top-3 rounded-full bg-[#29211d] px-2.5 py-1 text-[8px] font-semibold tracking-wider text-white">KIT COMPLETO</span>}
                   </div>
-                  <span className={`self-center rounded-sm px-3 py-2 text-[10px] font-semibold uppercase tracking-wider ${bumps[b.id] ? "bg-foreground text-background" : "bg-secondary text-foreground"}`}>
-                    {bumps[b.id] ? "Adicionado" : "Adicionar"}
-                  </span>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="text-[8px] font-semibold tracking-[0.14em] text-[#a18770]">{b.tag}</p>
+                        <h3 className="mt-1.5 text-sm font-semibold leading-snug text-[#29231f]">{b.title}</h3>
+                        <p className="mt-1.5 text-[11px] leading-relaxed text-[#81766d]">{b.desc}</p>
+                      </div>
+                      <div className="shrink-0 text-right">
+                        <p className="text-[8px] uppercase tracking-wider text-[#9a8b7e]">Por apenas</p>
+                        <p className="mt-1 text-lg font-bold tracking-tight text-[#29231f]">{formatBRL(b.price)}</p>
+                      </div>
+                    </div>
+                    <div className={`mt-4 flex items-center justify-center gap-2 rounded-lg px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.15em] transition-colors ${bumps[b.id] ? "bg-[#e9e1d8] text-[#4e3c2e]" : "bg-[#29211d] text-white group-hover:bg-[#5c493a]"}`}>
+                      {bumps[b.id] ? <><Check className="h-3.5 w-3.5" /> Adicionado ao pedido</> : "Quero aproveitar esta oferta"}
+                    </div>
+                    <input
+                      type="checkbox"
+                      checked={!!bumps[b.id]}
+                      onChange={(e) => setBumps({ ...bumps, [b.id]: e.target.checked })}
+                      className="sr-only"
+                      aria-label={`Adicionar ${b.title} por ${formatBRL(b.price)}`}
+                    />
+                  </div>
                 </label>
               ))}
             </div>
