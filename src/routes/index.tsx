@@ -120,7 +120,7 @@ function HomePage() {
   const visibleProducts = useMemo(() => category === "Todos" ? products : products.filter((p) => p.category === category), [category]);
   return (
     <main className="min-h-screen bg-[#fff9fb] text-[#46343d]">
-      <div className="bg-[#46343d] px-4 py-2 text-center text-[10px] tracking-[.22em] text-white">ELEGÂNCIA EM CADA DETALHE · NOVA COLEÇÃO COM FINALIZAÇÃO EM PLATINA</div>
+      <div className="bg-[#df91ad] px-4 py-2 text-center text-[10px] tracking-[.22em] text-white">ELEGÂNCIA EM CADA DETALHE · NOVA COLEÇÃO COM FINALIZAÇÃO EM PLATINA</div>
       <header className="sticky top-0 z-40 border-b border-[#f0dce5] bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 sm:h-[88px] sm:px-8">
           <button aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full p-2.5 text-[#30252a] transition hover:bg-[#fff1f5]"><Menu size={27} strokeWidth={1.5} /></button>
@@ -142,7 +142,7 @@ function HomePage() {
             <p className="mb-5 text-[10px] uppercase tracking-[.3em] text-[#987b89]">Uma nova forma de brilhar</p>
             <h1 className="max-w-xl font-serif text-4xl leading-[1.12] md:text-6xl">Conheça a nova coleção Pandora – <i>Finalização em Platina</i></h1>
             <p className="mt-6 max-w-lg text-sm leading-7 text-[#66615b] md:text-base">A Pandora apresenta uma nova geração de joias com acabamento em platina, combinando sofisticação, brilho e inovação.</p>
-            <a href="#colecao" className="mt-8 inline-flex items-center gap-4 bg-[#46343d] px-7 py-4 text-[10px] uppercase tracking-[.2em] text-white transition hover:bg-[#765968]">Descubra a coleção <ArrowRight size={15} /></a>
+            <a href="#colecao" className="mt-8 inline-flex items-center gap-4 bg-[#d98eaa] px-7 py-4 text-[10px] uppercase tracking-[.2em] text-white transition hover:bg-[#c87898]">Descubra a coleção <ArrowRight size={15} /></a>
           </div>
           <div className="relative mx-auto flex h-[340px] w-full max-w-[500px] items-center justify-center md:h-[500px]">
             <div className="absolute h-[270px] w-[270px] rounded-full border border-white/80 md:h-[370px] md:w-[370px]" />
