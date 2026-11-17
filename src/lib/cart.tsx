@@ -8,7 +8,7 @@ type CartCtx = {
   items: CartItem[];
   orders: Order[];
   add: (id: string, size: string) => void;
-  addWithBonus: (id: string, size: string, qty: number) => void;
+  addWithBonus: (id: string, size: string, paidQty: number, bonusQty: number) => void;
   remove: (id: string, size: string) => void;
   setQty: (id: string, size: string, qty: number) => void;
   clear: () => void;
@@ -53,17 +53,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const addWithBonus = (id: string, size: string, qty: number) => {
-    if (qty <= 0) return;
+  const addWithBonus = (id: string, size: string, paidQty: number, bonusQty: number) => {
+    if (paidQty <= 0 && bonusQty <= 0) return;
     setItems((prev) => {
       const idx = prev.findIndex((i) => i.id === id && i.size === size);
       if (idx >= 0) {
         const next = [...prev];
         const current = next[idx];
-        next[idx] = { ...current, qty: current.qty + qty, bonusQty: (current.bonusQty ?? 0) + qty };
+        next[idx] = { ...current, qty: current.qty + paidQty, bonusQty: (current.bonusQty ?? 0) + bonusQty };
         return next;
       }
-      return [...prev, { id, size, qty, bonusQty: qty }];
+      return [...prev, { id, size, qty: paidQty, ...(bonusQty > 0 ? { bonusQty } : {}) }];
     });
   };
 
@@ -72,7 +72,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const setQty = (id: string, size: string, qty: number) =>
     setItems((p) =>
-      p.map((i) => (i.id === id && i.size === size ? { ...i, qty: Math.max(1, qty), ...(i.bonusQty !== undefined ? { bonusQty: Math.max(1, qty) } : {}) } : i)),
+      p.map((i) => (i.id === id && i.size === size ? { ...i, qty: Math.max(1, qty) } : i)),
     );
 
   const clear = () => setItems([]);
