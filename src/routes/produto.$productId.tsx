@@ -172,7 +172,8 @@ function ProductPage() {
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-[.16em] text-[#a45f82]">Edição especial de Natal</p>
                   <h2 className="mt-1 font-serif text-lg text-[#46343d]">Escolha seus charms natalinos</h2>
-                  <p className="mt-1 text-[10px] text-[#806a75]">Selecione 2 charms e o 3º que você escolher sai grátis. A cada 3 selecionados, 1 é grátis.</p>
+                  <p className="mt-1 text-[10px] text-[#806a75]">Selecione 2 charms e o próximo que você escolher sai grátis. A cada 3 selecionados, 1 é grátis.</p>
+                  <p aria-live="polite" className="mt-1 text-[10px] font-semibold text-[#a45f82]">{charmSelectionOrder.length % 3 === 2 ? "Seu próximo charm será grátis!" : `Escolha mais ${2 - (charmSelectionOrder.length % 3)} para liberar o próximo grátis.`}</p>
                 </div>
                 <span className="shrink-0 rounded-full bg-[#fff1f6] px-2.5 py-1 text-[9px] font-semibold text-[#a45f82]">4 opções</span>
               </div>
