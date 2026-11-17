@@ -24,8 +24,20 @@ const SHIPPING: Shipping[] = [
 ];
 
 const BUMPS = [
-  { id: "anel-pave-gota", title: "Anel Life Pavê Gota em Prata 925 com Zircônia Incolor por apenas R$ 33,90", desc: "Leve também o Anel Life Pavê Gota com desconto exclusivo no checkout.", price: 33.9 },
-  { id: "colar", title: "Adicionar Colar Petite Infinito em Prata 925 por apenas R$ 67,90", desc: "Leve também o Colar do Infinito com desconto exclusivo no checkout.", price: 67.9 },
+  {
+    id: "flanela-prata",
+    eyebrow: "CUIDADO ESPECIAL",
+    title: "Flanela de cuidado para suas joias",
+    desc: "Um complemento prático para ajudar a manter o brilho das suas peças.",
+    price: 14.87,
+  },
+  {
+    id: "estojo-viagem",
+    eyebrow: "MAIS PRATICIDADE",
+    title: "Estojo compacto para guardar suas joias",
+    desc: "Guarde e transporte suas peças com mais organização no dia a dia e em viagens.",
+    price: 49.87,
+  },
 ];
 
 const onlyDigits = (value: string) => value.replace(/\D/g, "");
@@ -177,10 +189,28 @@ function CheckoutPage() {
       </header>
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-8">
-        <h1 className="text-foreground text-xl sm:text-2xl tracking-[0.15em] font-medium">CHECKOUT</h1>
-        <p className="text-primary text-sm mt-1 pb-4 border-b border-border">
-          {count} {count === 1 ? "item" : "itens"} na sacola
-        </p>
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border pb-5">
+          <div>
+            <p className="text-[10px] font-semibold tracking-[0.2em] text-primary uppercase">Finalização segura</p>
+            <h1 className="mt-1 text-foreground text-xl sm:text-2xl tracking-[0.15em] font-medium">CHECKOUT</h1>
+            <p className="text-primary text-sm mt-1">{count} {count === 1 ? "item" : "itens"} na sacola</p>
+          </div>
+          <div className="flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs text-muted-foreground">
+            <Lock className="h-3.5 w-3.5" /> Seus dados protegidos
+          </div>
+        </div>
+        <div className="mt-5 grid grid-cols-3 gap-2">
+          {[
+            { n: 1, label: "Seus dados" },
+            { n: 2, label: "Entrega" },
+            { n: 3, label: "Pagamento" },
+          ].map((s) => (
+            <div key={s.n} className="space-y-2">
+              <div className={`h-1 rounded-full ${step >= s.n ? "bg-foreground" : "bg-border"}`} />
+              <p className={`text-[10px] sm:text-xs ${step >= s.n ? "font-semibold text-foreground" : "text-muted-foreground"}`}>{s.label}</p>
+            </div>
+          ))}
+        </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_360px]">
           <div className="space-y-6">
@@ -385,13 +415,37 @@ function CheckoutPage() {
             </div>
 
             <div className="space-y-3">
+              <div className="rounded-sm bg-secondary/60 p-4">
+                <p className="text-[10px] font-semibold tracking-[0.18em] text-primary uppercase">Complete sua experiência</p>
+                <p className="mt-1 text-sm font-medium text-foreground">Ofertas especiais para acompanhar suas joias</p>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Adicione ao pedido se desejar. As ofertas são opcionais.</p>
+              </div>
               {BUMPS.map((b) => (
-                <label key={b.id} className="flex gap-3 border border-dashed border-border rounded-sm p-3 cursor-pointer">
-                  <input type="checkbox" checked={!!bumps[b.id]} onChange={(e) => setBumps({ ...bumps, [b.id]: e.target.checked })} className="mt-1 accent-foreground" />
-                  <div>
-                    <div className="text-xs sm:text-sm font-semibold text-foreground leading-snug">{b.title}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{b.desc}</div>
+                <label
+                  key={b.id}
+                  className={`relative flex gap-3 rounded-md border p-4 cursor-pointer transition-all ${bumps[b.id] ? "border-foreground bg-secondary/40 shadow-sm" : "border-border bg-background hover:border-primary"}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={!!bumps[b.id]}
+                    onChange={(e) => setBumps({ ...bumps, [b.id]: e.target.checked })}
+                    className="mt-1 h-4 w-4 shrink-0 accent-foreground"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[9px] font-semibold tracking-[0.16em] text-primary">{b.eyebrow}</span>
+                      <span className="rounded-full bg-secondary px-2 py-0.5 text-[9px] text-primary">Oferta opcional</span>
+                    </div>
+                    <div className="mt-2 text-sm font-semibold leading-snug text-foreground">{b.title}</div>
+                    <div className="mt-1 text-xs leading-relaxed text-muted-foreground">{b.desc}</div>
+                    <div className="mt-3 flex flex-wrap items-baseline gap-2">
+                      <span className="text-base font-semibold text-foreground">{formatBRL(b.price)}</span>
+                      <span className="text-[10px] text-muted-foreground">adicionar ao pedido</span>
+                    </div>
                   </div>
+                  <span className={`self-center rounded-sm px-3 py-2 text-[10px] font-semibold uppercase tracking-wider ${bumps[b.id] ? "bg-foreground text-background" : "bg-secondary text-foreground"}`}>
+                    {bumps[b.id] ? "Adicionado" : "Adicionar"}
+                  </span>
                 </label>
               ))}
             </div>
