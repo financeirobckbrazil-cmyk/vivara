@@ -24,7 +24,7 @@ export const products: Product[] = [
   { id: "pandora-3", name: "Charm Murano Magia de Natal", image: "https://laatukoru.fi/cdn/shop/files/Pandora_Moments_Christmas_Magic_Murano_Glass_hela_hopea_793597C00.jpg?v=1765638585", price: 35.78 },
   { id: "pandora-4", name: "Charm Globo de Neve", image: "https://pancharmbracelets.com/cdn/shop/products/HIGH_792369C01_RGB.jpg?v=1666724772", price: 35.78 },
   { id: "pandora-5", name: "Anel Flor de Cerejeira da Mulan", image: "https://pandora.lucerneluxe.com/cdn/shop/files/HIGH_RGB_193801C01_RGB_1024x1024%402x.jpg?v=1749657602", price: 35.78 },
-  { id: "pandora-6", name: "Charm Árvore de Natal", image: "https://www.thbaker.co.uk/media/catalog/product/cache/559903688dc9fe82c7c6365725123978/1/7/17-06-25147811_pandora_01.jpg", price: 35.78 },
+  { id: "pandora-6", name: "Charm Árvore de Natal", image: "https://br.pandora.net/dw/image/v2/BLTN_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw629b81fa/productimages/main_rect_center/764248C01_RGB.jpg?bgcolor=F7F7F7&q=90&sfrm=png&sw=1200", price: 35.78 },
   { id: "pandora-9", name: "Anel Tiara de Estrelas", image: "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362", price: 35.78 },
   { id: "pandora-10", name: "Colar de Corrente Snake", image: "https://pandora-eshop.jo/cdn/shop/files/WEB_393099C01_RGB.png?v=1754776761&width=2048", price: 35.78 },
   { id: "pandora-14", name: "Colar de Malha Brilhante", image: "https://laatukoru.fi/cdn/shop/files/Pandora_Timeless_Elevated_Heart_kaulakoru_hopea_398425C0_45.jpg?v=1747904947", price: 35.78 },
