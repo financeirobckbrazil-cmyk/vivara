@@ -29,7 +29,7 @@ const BUMPS = [
     title: "Colar de prata com brilho cravejado",
     desc: "Um toque delicado de brilho para complementar suas pulseiras e deixar sua composição ainda mais elegante.",
     price: 48.45,
-    image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwb8d3b849/productimages/main_rect_center/335080C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
+    image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwb8d3b849/productimages/main_rect_center/335080C01_RGB.jpg?bgcolor=F7F7F7&q=90&sfrm=png&sw=1200",
     imageAlt: "Colar prateado Pandora com malha brilhante e fecho de coração",
     tag: "BRILHO QUE COMPLETA SEU VISUAL",
   },
@@ -39,7 +39,7 @@ const BUMPS = [
     title: "Kit de limpeza para joias",
     desc: "Conjunto de cuidado com solução de limpeza, escova macia e flanela para suas peças.",
     price: 49.87,
-    image: "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw6ea1f0c9/productimages/main_rect_center/CARE_KIT_JAR_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
+    image: "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw0b1f9cf1/productimages/singlepackshot/CARE_KIT_JAR_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200",
     imageAlt: "Kit de limpeza para joias Pandora",
     tag: "CUIDE DAS SUAS PEÇAS",
   },
@@ -49,7 +49,7 @@ const BUMPS = [
     title: "Flanela macia para polimento",
     desc: "Flanela delicada para remover marcas do dia a dia e devolver o brilho às suas joias.",
     price: 19.90,
-    image: "/images/products/polishing-cloth.svg",
+    image: "https://laatukoru.fi/cdn/shop/files/Pandora_puhdistusliina_A001.jpg?v=1759136280&width=1024",
     imageAlt: "Flanela rosa clara para polimento de joias",
     tag: "MANTENHA O BRILHO DAS SUAS PEÇAS",
   },
@@ -78,7 +78,10 @@ function CheckoutPage() {
   const { items, total, count } = useCart();
   const hasNonBraceletProduct = items.some((item) => {
     const product = getProduct(item.id);
-    return product ? !/pulseira/i.test(product.name) : false;
+    if (!product) return true;
+    if (/pulseira/i.test(product.name)) return false;
+    if (/charm/i.test(product.name) && item.bonusQty) return false;
+    return true;
   });
   const visibleBumps = hasNonBraceletProduct ? BUMPS : [];
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -459,7 +462,7 @@ function CheckoutPage() {
                   className={`group relative block cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${bumps[b.id] ? "border-[#b77f98] ring-2 ring-[#d7a9bd]/30" : "border-[#f0dce5] hover:border-[#d7a9bd]"}`}
                 >
                   <div className="relative flex h-28 items-center justify-center overflow-hidden bg-[#fff3f7] sm:h-32">
-                    <img src={b.image} alt={b.imageAlt} loading="lazy" className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
+                    <img src={b.image} alt={b.imageAlt} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = b.id === "kit-limpeza" ? "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw0b1f9cf1/productimages/singlepackshot/CARE_KIT_JAR_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200" : b.id === "flanela-polimento" ? "https://laatukoru.fi/cdn/shop/files/Pandora_puhdistusliina_A001.jpg?v=1759136280&width=1024" : "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwb8d3b849/productimages/main_rect_center/335080C01_RGB.jpg?bgcolor=F7F7F7&q=90&sfrm=png&sw=1200"; }} className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
                     <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[8px] font-semibold tracking-[0.13em] text-[#987184] shadow-sm">{b.eyebrow}</span>
                     {b.id === "kit-limpeza" && <span className="absolute right-3 top-3 rounded-full bg-[#513b46] px-2.5 py-1 text-[8px] font-semibold tracking-wider text-white">KIT COMPLETO</span>}
                   </div>
