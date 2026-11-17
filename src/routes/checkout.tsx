@@ -83,7 +83,8 @@ function CheckoutPage() {
     if (/charm/i.test(product.name) && item.bonusQty) return false;
     return true;
   });
-  const visibleBumps = hasNonBraceletProduct ? BUMPS : [];
+  const existingAddonIds = new Set(items.map((item) => item.id));
+  const visibleBumps = hasNonBraceletProduct ? BUMPS.filter((b) => !existingAddonIds.has(b.id)) : [];
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [bumps, setBumps] = useState<Record<string, boolean>>({});
   const [shipping, setShipping] = useState<string>("");
