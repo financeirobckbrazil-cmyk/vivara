@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, ShoppingBag, User } from "lucide-react";
 import { type ReactNode } from "react";
-import logoLife from "@/assets/life-vivara-logo.png";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
 
@@ -18,7 +17,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </span>
 
           <Link to="/" className="flex items-center">
-            <img src={logoLife} alt="Life Vivara" className="h-10 w-auto" />
+            <span className="font-serif text-2xl font-semibold tracking-[0.18em] text-brand">LIFE <span className="text-[#a58a70]">PANDORA</span></span>
           </Link>
 
           <div className="flex items-center gap-3 text-brand">
@@ -35,8 +34,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <main className="flex-1">{children}</main>
 
       <footer className="bg-brand text-brand-foreground mt-16 py-8 px-4 text-center text-sm">
-        <img src={logoLife} alt="Life Vivara" className="h-10 w-auto mx-auto mb-4 invert brightness-0" />
-        <p className="opacity-80">© {new Date().getFullYear()} Life Vivara. Todos os direitos reservados.</p>
+        <span className="mb-4 inline-block font-serif text-2xl font-semibold tracking-[0.18em] text-white">LIFE PANDORA</span>
+        <p className="opacity-80">© {new Date().getFullYear()} Life Pandora. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
