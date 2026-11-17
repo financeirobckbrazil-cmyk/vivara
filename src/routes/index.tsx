@@ -156,6 +156,10 @@ function HomePage() {
           <p className="text-xs tracking-wide text-[#6f6962]">9 peças selecionadas</p>
         </div>
         <div className="mb-8 flex gap-2 overflow-x-auto pb-2">{categories.map((item) => <button key={item} onClick={() => setCategory(item)} className={`whitespace-nowrap border px-4 py-2 text-[10px] uppercase tracking-[.12em] transition ${category === item ? "border-[#46343d] bg-[#46343d] text-white" : "border-[#ddd7cf] text-[#806a75] hover:border-[#46343d]"}`}>{item}</button>)}</div>
+        <div className="mb-6 flex flex-col gap-2 rounded-xl border border-[#e8cbd8] bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div><p className="text-[10px] font-semibold uppercase tracking-[.18em] text-[#a45f82]">Presente especial</p><p className="mt-1 font-serif text-lg text-[#46343d]">Na compra de uma pulseira, compre 1 charm e ganhe outro igual grátis.</p></div>
+          <span className="text-xs text-[#806a75]">Escolha seus charms na página da pulseira.</span>
+        </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
           {visibleProducts.map((product) => <article key={product.id} className="group overflow-hidden border border-[#f0dce5] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(45,38,30,0.09)]">
             <div className="relative aspect-[4/5] overflow-hidden bg-[#fff3f7]">
