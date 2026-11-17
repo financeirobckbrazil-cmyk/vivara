@@ -27,36 +27,6 @@ const products: Product[] = [
     "link": "https://br.pandora.net/pt/lancamentos-red/pulseira-de-malha-brilhante-com-fecho-de-corac%C3%A3o-/534971C01.html"
   },
   {
-    "id": 2,
-    "name": "Charm Dachshund de Natal",
-    "description": "Charm de cachorro com detalhes festivos e opala sintética.",
-    "category": "Charms natalinos",
-    "price": "R$ 35,78",
-    "kind": "dog",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwbf6e8cc0/productimages/main_rect_center/734970C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/dangle-charms/christmas-dachshund-dangle-charm/734970C01.html"
-  },
-  {
-    "id": 3,
-    "name": "Charm Yeti Nevado",
-    "description": "Personagem Yeti em acabamento de platina.",
-    "category": "Charms temáticos",
-    "price": "R$ 35,78",
-    "kind": "snow",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwa681c507/productimages/main_rect_center/735058C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/charms/snowy-yeti-charm/735058C01.html"
-  },
-  {
-    "id": 4,
-    "name": "Charm Azevinho de Natal",
-    "description": "Charm com folhas de azevinho para celebrar a temporada.",
-    "category": "Charms natalinos",
-    "price": "R$ 35,78",
-    "kind": "holly",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwa4f2cdf4/productimages/main_rect_center/734974C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/charms/christmas-holly-charm/734974C01.html"
-  },
-  {
     "id": 5,
     "name": "Anel Flor de Cerejeira da Mulan",
     "description": "Peça especial da colaboração Disney x Pandora.",
@@ -65,36 +35,6 @@ const products: Product[] = [
     "kind": "flower",
     "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw432fdfde/productimages/main_rect_center/135027C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
     "link": "https://us.pandora.net/en/rings/statement-rings/disney-mulan-cherry-blossom-ring/135027C01.html"
-  },
-  {
-    "id": 6,
-    "name": "Charm Hortelã-Pimenta Vermelha",
-    "description": "Charm de vidro Murano com inspiração natalina.",
-    "category": "Charms natalinos",
-    "price": "R$ 35,78",
-    "kind": "candy",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw8584ae06/productimages/main_rect_center/735071C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/charms/red-peppermint-murano-glass-charm/735071C01.html"
-  },
-  {
-    "id": 7,
-    "name": "Charm Holiday Joy Vazado",
-    "description": "Charm vazado com detalhes inspirados nas festas.",
-    "category": "Charms natalinos",
-    "price": "R$ 35,78",
-    "kind": "gift",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwfb7094cf/productimages/main_rect_center/735064C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/charms/holiday-joy-openwork-charm/735064C01.html"
-  },
-  {
-    "id": 8,
-    "name": "Charm Hortelã-Pimenta Verde",
-    "description": "Charm de vidro Murano em versão verde festiva.",
-    "category": "Charms natalinos",
-    "price": "R$ 35,78",
-    "kind": "candy",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw2bc69654/productimages/main_rect_center/735071C02_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/charms/green-peppermint-murano-glass-charm/735071C02.html"
   },
   {
     "id": 9,
@@ -117,36 +57,6 @@ const products: Product[] = [
     "link": "https://us.pandora.net/en/necklaces/chain-necklaces/pandora-moments-snake-chain-necklace--platinum-plated/314563C00.html"
   },
   {
-    "id": 11,
-    "name": "Charm Pendente Mistletoe",
-    "description": "Pingente de azevinho com visual delicado.",
-    "category": "Charms natalinos",
-    "price": "R$ 35,78",
-    "kind": "holly",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw71385fce/productimages/main_rect_center/735066C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/dangle-charms/mistletoe-dangle-charm/735066C01.html"
-  },
-  {
-    "id": 12,
-    "name": "Charm Estrela Vazado",
-    "description": "Charm com desenho de estrela e acabamento luminoso.",
-    "category": "Charms temáticos",
-    "price": "R$ 35,78",
-    "kind": "star",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw15224b6b/productimages/main_rect_center/735034C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/charms/star-openwork-charm/735034C01.html"
-  },
-  {
-    "id": 13,
-    "name": "Charm Coração Roxo Gravável",
-    "description": "Coração com esmaltação brilhante e verso personalizável.",
-    "category": "Charms de coração",
-    "price": "R$ 35,78",
-    "kind": "heart",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw251a2801/productimages/main_rect_center/735088C02_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/dangle-charms/engravable-purple-heart-dangle-charm/735088C02.html"
-  },
-  {
     "id": 14,
     "name": "Colar de Malha Brilhante",
     "description": "Colar com fecho de coração e malha brilhante.",
@@ -157,54 +67,44 @@ const products: Product[] = [
     "link": "https://us.pandora.net/en/necklaces/chain-necklaces/heart-clasp-sparkling-mesh-necklace/335080C01.html"
   },
   {
-    "id": 15,
-    "name": "Charm Coração Vermelho Gravável",
-    "description": "Coração vermelho cintilante com verso personalizável.",
-    "category": "Charms de coração",
+    "id": 20,
+    "name": "Pulseira Life Coração em Prata 925",
+    "description": "Pulseira delicada com acabamento prateado para criar combinações especiais.",
+    "category": "Pulseiras",
     "price": "R$ 35,78",
-    "kind": "heart",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwef9caea9/productimages/main_rect_center/735088C03_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/dangle-charms/engravable-red-heart-dangle-charm/735088C03.html"
+    "kind": "bracelet",
+    "image": "/__l5e/assets-v1/3ffc5a30-a5f8-45eb-9516-8d838b1a3a57/pulseira-2.png",
+    "link": "#"
   },
   {
-    "id": 16,
-    "name": "Charm Coração Azul Gravável",
-    "description": "Coração azul com brilho delicado e verso personalizável.",
-    "category": "Charms de coração",
+    "id": 21,
+    "name": "Pulseira Life Love em Prata 925",
+    "description": "Design elegante para usar sozinha ou combinar com seus charms favoritos.",
+    "category": "Pulseiras",
     "price": "R$ 35,78",
-    "kind": "heart",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw2da70ff6/productimages/main_rect_center/735088C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/dangle-charms/engravable-blue-heart-dangle-charm/735088C01.html"
+    "kind": "bracelet",
+    "image": "/__l5e/assets-v1/8b272c0a-071a-43c9-9b77-dac43b8e57cf/pulseira-3.png",
+    "link": "#"
   },
   {
-    "id": 17,
-    "name": "Charm Planeta Azul Celestial",
-    "description": "Charm inspirado no universo com esmaltação azul.",
-    "category": "Charms temáticos",
+    "id": 22,
+    "name": "Pulseira Life com Fecho Coração",
+    "description": "Uma peça clássica para personalizar com seus charms preferidos.",
+    "category": "Pulseiras",
     "price": "R$ 35,78",
-    "kind": "planet",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwe6c4ef62/productimages/main_rect_center/735038C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/charms/celestial-blue-planet-charm/735038C01.html"
+    "kind": "bracelet",
+    "image": "/__l5e/assets-v1/634eeb34-6c6f-48d6-814c-85ecbf7ec536/pulseira-4.png",
+    "link": "#"
   },
   {
-    "id": 18,
-    "name": "Charm Coração Azul Abaulado",
-    "description": "Coração azul com acabamento escovado e esmaltação.",
-    "category": "Charms de coração",
+    "id": 23,
+    "name": "Pulseira Life em Prata 925",
+    "description": "Pulseira versátil com brilho delicado para todas as ocasiões.",
+    "category": "Pulseiras",
     "price": "R$ 35,78",
-    "kind": "heart",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw8ecf4240/productimages/main_rect_center/735075C01_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://us.pandora.net/en/charms/dangle-charms/blue-puffy-heart-dangle-charm/735075C01.html"
-  },
-  {
-    "id": 19,
-    "name": "Charm Coração Fosco Abaulado",
-    "description": "Coração com acabamento fosco escovado e argola polida.",
-    "category": "Charms de coração",
-    "price": "R$ 35,78",
-    "kind": "heart",
-    "image": "https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw109a9d12/productimages/main_rect_center/734908C00_RGB.jpg?bgcolor=F7F7F7&q=70&sfrm=png&sw=384",
-    "link": "https://br.pandora.net/pt/lancamentos-red/charm-pendente-de-corac%C3%A3o-curvo-fosco/734908C00.html"
+    "kind": "bracelet",
+    "image": "/__l5e/assets-v1/69a962f2-30d9-47a7-806c-df1a1756bcc9/pulseira-5.png",
+    "link": "#"
   }
 ];
 
@@ -213,7 +113,7 @@ function HomePage() {
   const navigate = useNavigate();
   const [category, setCategory] = useState("Todos");
   const [menuOpen, setMenuOpen] = useState(false);
-  const categories = ["Todos", "Pulseiras", "Charms de coração", "Charms temáticos", "Charms natalinos", "Anéis", "Colares"];
+  const categories = ["Todos", "Pulseiras", "Anéis", "Colares"];
   const visibleProducts = useMemo(() => category === "Todos" ? products : products.filter((p) => p.category === category), [category]);
   return (
     <main className="min-h-screen bg-[#fff9fb] text-[#46343d]">
@@ -252,8 +152,8 @@ function HomePage() {
 
       <section className="mx-auto max-w-7xl px-5 py-14 md:py-20" id="colecao">
         <div className="mb-9 flex flex-wrap items-end justify-between gap-5">
-          <div><p className="text-[10px] uppercase tracking-[.25em] text-[#b58b9d]">Encontre sua peça</p><h2 className="mt-2 font-serif text-3xl md:text-4xl">A coleção</h2><p className="mt-2 text-sm text-[#8b7781]">19 opções para expressar sua personalidade.</p></div>
-          <p className="text-xs tracking-wide text-[#6f6962]">19 peças selecionadas</p>
+          <div><p className="text-[10px] uppercase tracking-[.25em] text-[#b58b9d]">Encontre sua peça</p><h2 className="mt-2 font-serif text-3xl md:text-4xl">A coleção</h2><p className="mt-2 text-sm text-[#8b7781]">9 opções para expressar sua personalidade.</p></div>
+          <p className="text-xs tracking-wide text-[#6f6962]">9 peças selecionadas</p>
         </div>
         <div className="mb-8 flex gap-2 overflow-x-auto pb-2">{categories.map((item) => <button key={item} onClick={() => setCategory(item)} className={`whitespace-nowrap border px-4 py-2 text-[10px] uppercase tracking-[.12em] transition ${category === item ? "border-[#46343d] bg-[#46343d] text-white" : "border-[#ddd7cf] text-[#806a75] hover:border-[#46343d]"}`}>{item}</button>)}</div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
