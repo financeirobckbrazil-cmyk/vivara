@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Heart, Lock, Minus, Plus, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
+import { ArrowRight, Heart, Lock, Minus, Plus, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
 import { toast } from "sonner";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct, products } from "@/lib/products";
@@ -61,7 +61,7 @@ function ProductPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-16 pt-6 md:pt-10">
         <nav className="mb-7 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[.12em] text-[#92877c]">
-          <Link to="/" className="hover:text-[#29231f]">Início</Link><span>/</span><Link to="/#colecao" className="hover:text-[#29231f]">Coleção</Link><span>/</span><span className="text-[#29231f]">{category}</span>
+          <Link to="/" className="hover:text-[#29231f]">Início</Link><span>/</span><Link to="/" hash="colecao" className="hover:text-[#29231f]">Coleção</Link><span>/</span><span className="text-[#29231f]">{category}</span>
         </nav>
 
         <div className="grid gap-9 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,.88fr)] lg:gap-16">
