@@ -20,7 +20,7 @@ export const products: Product[] = [
   { id: "love", name: "Pulseira Pandora Life Prata Fecho Coração", image: "https://image.rakuten.co.jp/onemore/cabinet/002/pd-590728-d.jpg", oldPrice: 527, price: 35.78 },
   
   { id: "pandora-1", name: "Pulseira de Malha Brilhante", image: "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200", price: 35.78 },
-  { id: "pandora-2", name: "Charm Coração Brilhante", image: "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png", price: 35.78 },
+  { id: "pandora-2", name: "Charm Coração Brilhante", image: "https://pandora-eshop.jo/cdn/shop/files/WEB_793604C01_front_RGB.png?v=1763624335&width=1000", price: 35.78 },
   { id: "pandora-3", name: "Charm Laço Encantado", image: "https://www.time.am/upload/iblock/442/9f45e7cnhkqjks706vycqevlokte2113.jpg", price: 35.78 },
   { id: "pandora-4", name: "Charm Coroa Real", image: "https://shop.harms-der-juwelier.de/media/28/5d/63/1710340111/high_790930_rgb.jpg?ts=1710341161", price: 35.78 },
   { id: "pandora-5", name: "Anel Flor de Cerejeira da Mulan", image: "https://pandora.lucerneluxe.com/cdn/shop/files/HIGH_RGB_193801C01_RGB_1024x1024%402x.jpg?v=1749657602", price: 35.78 },
