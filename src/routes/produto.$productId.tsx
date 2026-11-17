@@ -33,19 +33,28 @@ function ProductPage() {
 
   const isRing = /anel/i.test(product.name);
   const isBracelet = /pulseira/i.test(product.name);
-  const charmOptions = products.filter((item) => item.name.toLowerCase().startsWith("charm"));
+  const charmIds = ["pandora-2", "pandora-3", "pandora-4", "pandora-6"];
+  const charmOptions = charmIds.map((id) => products.find((item) => item.id === id)).filter((item): item is (typeof products)[number] => Boolean(item));
   const sizes = isRing ? ["16", "18", "20", "22"] : ["Único"];
   const images = [product.image];
   const related = products.filter((item) => item.id !== product.id && !item.name.toLowerCase().startsWith("charm")).slice(0, 4);
   const category = /anel/i.test(product.name) ? "Anéis" : /colar/i.test(product.name) ? "Colares" : /pulseira/i.test(product.name) ? "Pulseiras" : "Charms";
 
+  const addSelectedCharms = () => {
+    Object.entries(selectedCharms).forEach(([id, qty]) => {
+      if (qty > 0) addWithBonus(id, "Único", qty);
+    });
+  };
+
   const addToBag = () => {
     for (let i = 0; i < quantity; i += 1) add(product.id, selectedSize);
-    toast.success("Produto adicionado à sacola.");
+    if (isBracelet) addSelectedCharms();
+    toast.success(isBracelet ? "Pulseira e charms adicionados à sacola." : "Produto adicionado à sacola.");
   };
 
   const buyNow = () => {
     for (let i = 0; i < quantity; i += 1) add(product.id, selectedSize);
+    if (isBracelet) addSelectedCharms();
     navigate({ to: "/checkout" });
   };
 
@@ -109,35 +118,35 @@ function ProductPage() {
               </div>
             </div>
 
-            {isBracelet && <section className="mt-8 rounded-2xl border border-[#e8cbd8] bg-white p-4 sm:p-5">
-              <div className="flex items-start gap-3">
-                <span className="rounded-full bg-[#f9e8ef] p-2 text-[#a45f82]"><Sparkles size={17} /></span>
+            {isBracelet && <section className="mt-6 rounded-xl border border-[#ead5df] bg-white p-3 sm:p-4">
+              <div className="mb-3 flex items-center justify-between gap-2">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[.18em] text-[#a45f82]">Oferta especial para quem compra pulseira</p>
-                  <h2 className="mt-1 font-serif text-xl text-[#46343d]">Compre 1 charm e ganhe outro grátis!</h2>
-                  <p className="mt-2 text-xs leading-5 text-[#806a75]">Escolha seus charms abaixo. A cada unidade paga, você recebe mais 1 unidade do mesmo charm como bônus. O brinde não será cobrado.</p>
+                  <p className="text-[9px] font-semibold uppercase tracking-[.16em] text-[#a45f82]">Oferta especial</p>
+                  <h2 className="mt-1 font-serif text-lg text-[#46343d]">Escolha seus charms</h2>
+                  <p className="mt-1 text-[10px] text-[#806a75]">Compre 1 e ganhe outro igual grátis.</p>
                 </div>
+                <span className="shrink-0 rounded-full bg-[#fff1f6] px-2.5 py-1 text-[9px] font-semibold text-[#a45f82]">4 opções</span>
               </div>
-              <div className="mt-5 grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {charmOptions.map((charm) => {
                   const qty = selectedCharms[charm.id] ?? 0;
-                  return <div key={charm.id} className={`overflow-hidden rounded-xl border ${qty > 0 ? "border-[#b77f98] ring-1 ring-[#d7a9bd]" : "border-[#f0dce5]"}`}>
-                    <div className="aspect-square bg-[#fff3f7]"><img src={charm.image} alt={charm.name} loading="lazy" className="h-full w-full object-contain p-2" /></div>
-                    <div className="p-3">
-                      <p className="min-h-9 text-xs leading-4 text-[#46343d]">{charm.name}</p>
-                      <p className="mt-1 text-sm font-semibold text-[#46343d]">{formatBRL(charm.price)}</p>
-                      <p className="mt-1 text-[9px] font-semibold uppercase tracking-wide text-[#a45f82]">+ 1 igual grátis por unidade</p>
-                      <div className="mt-3 flex items-center justify-between">
-                        <button type="button" aria-label={`Diminuir ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.max(0, qty - 1) }))} className="h-8 w-8 rounded-full border border-[#e8cbd8] text-[#694b5b]">−</button>
-                        <span className="text-xs font-semibold tabular-nums">{qty}</span>
-                        <button type="button" aria-label={`Adicionar ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.min(10, qty + 1) }))} className="h-8 w-8 rounded-full border border-[#e8cbd8] text-[#694b5b]">+</button>
+                  return <div key={charm.id} className={`overflow-hidden rounded-lg border ${qty > 0 ? "border-[#b77f98] ring-1 ring-[#d7a9bd]" : "border-[#f0dce5]"}`}>
+                    <div className="aspect-square bg-[#fff3f7] p-1.5">
+                      <img src={charm.image} alt={charm.name} loading="lazy" className="h-full w-full object-contain" />
+                    </div>
+                    <div className="p-2">
+                      <p className="min-h-8 text-[10px] leading-4 text-[#46343d]">{charm.name}</p>
+                      <p className="mt-1 text-xs font-semibold text-[#46343d]">{formatBRL(charm.price)}</p>
+                      <p className="mt-0.5 text-[8px] font-semibold text-[#a45f82]">+ 1 grátis</p>
+                      <div className="mt-2 flex items-center justify-between">
+                        <button type="button" aria-label={`Diminuir ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.max(0, qty - 1) }))} className="h-7 w-7 rounded-full border border-[#e8cbd8] text-sm text-[#694b5b]">−</button>
+                        <span className="text-[10px] font-semibold tabular-nums">{qty}</span>
+                        <button type="button" aria-label={`Adicionar ${charm.name}`} onClick={() => setSelectedCharms((s) => ({ ...s, [charm.id]: Math.min(10, qty + 1) }))} className="h-7 w-7 rounded-full border border-[#e8cbd8] text-sm text-[#694b5b]">+</button>
                       </div>
-                      {qty > 0 && <p className="mt-2 text-[10px] font-medium text-[#a45f82]">Você leva {qty * 2}: {qty} pagos + {qty} grátis</p>}
                     </div>
                   </div>;
                 })}
               </div>
-              <p className="mt-4 rounded-lg bg-[#fff3f7] px-3 py-2 text-[10px] leading-4 text-[#806a75]">Selecione a quantidade de cada charm. Os bônus serão aplicados automaticamente na sacola e no checkout.</p>
             </section>}
 
             <div className="mt-7 grid gap-3">
