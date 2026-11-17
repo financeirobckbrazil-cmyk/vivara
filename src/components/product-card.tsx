@@ -38,6 +38,7 @@ export function ProductCard({ product }: { product: Product }) {
         <img
           src={product.image}
           alt={product.name}
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200"; }}
           loading="lazy"
           width={1024}
           height={1024}
