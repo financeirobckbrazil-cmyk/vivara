@@ -193,7 +193,7 @@ function CheckoutPage() {
       </div>
       <header className="border-b border-[#eee7df] bg-white px-5 py-4 sm:px-10">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <Link to="/" className="font-serif text-xl font-semibold tracking-[0.18em] text-[#28221e] sm:text-2xl">LIFE <span className="text-[#a58a70]">PANDORA</span></Link>
+          <Link to="/" className="font-serif text-xl font-semibold tracking-[0.18em] text-[#28221e] sm:text-2xl">LIFE <span className="text-[#b77f98]">PANDORA</span></Link>
           <span className="inline-flex items-center gap-2 rounded-full bg-[#f6f3ef] px-3 py-2 text-[10px] font-medium text-[#63584e]"><ShieldCheck className="h-3.5 w-3.5" /> Ambiente protegido</span>
         </div>
       </header>
@@ -202,7 +202,7 @@ function CheckoutPage() {
         <div className="mb-6 overflow-hidden rounded-xl bg-gradient-to-r from-[#f2ece5] via-[#faf7f3] to-[#eee5dc] px-5 py-6 sm:px-8 sm:py-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.24em] text-[#9a785d] uppercase"><Sparkles className="h-3.5 w-3.5" /> Falta pouco para sua joia chegar</p>
+              <p className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.24em] text-[#b77f98] uppercase"><Sparkles className="h-3.5 w-3.5" /> Falta pouco para sua joia chegar</p>
               <h1 className="mt-2 font-serif text-2xl tracking-[0.08em] text-[#28221e] sm:text-3xl">Finalizar pedido</h1>
               <p className="mt-2 text-xs text-[#74685d]">{count} {count === 1 ? "item selecionado" : "itens selecionados"} · Revise seus dados e escolha a entrega</p>
             </div>
@@ -406,7 +406,7 @@ function CheckoutPage() {
           </div>
 
           {/* RESUMO */}
-          <aside className="sticky top-5 rounded-xl border border-[#e8e0d8] bg-white p-5 shadow-[0_12px_40px_rgba(46,35,25,0.06)] sm:p-6 h-fit space-y-5">
+          <aside className="sticky top-5 rounded-xl border border-[#f0dce5] bg-white p-5 shadow-[0_12px_40px_rgba(46,35,25,0.06)] sm:p-6 h-fit space-y-5">
             <h2 className="text-foreground text-sm tracking-[0.15em] font-semibold">RESUMO DO PEDIDO</h2>
 
             <div className="space-y-3 text-sm pb-5 border-b border-border">
@@ -427,34 +427,34 @@ function CheckoutPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="rounded-xl bg-gradient-to-br from-[#29211d] to-[#514034] p-4 text-white shadow-sm">
-                <p className="flex items-center gap-2 text-[9px] font-semibold tracking-[0.22em] text-[#e8cdb2] uppercase"><Sparkles className="h-3.5 w-3.5" /> Um mimo para suas joias</p>
+              <div className="rounded-xl bg-gradient-to-br from-[#513b46] to-[#815c70] p-4 text-white shadow-sm">
+                <p className="flex items-center gap-2 text-[9px] font-semibold tracking-[0.22em] text-[#f4dce7] uppercase"><Sparkles className="h-3.5 w-3.5" /> Um mimo para suas joias</p>
                 <p className="mt-2 font-serif text-lg leading-snug">Aproveite para cuidar ainda melhor das suas peças</p>
                 <p className="mt-1 text-xs leading-relaxed text-white/75">Adicionais exclusivos para completar seu pedido. Você escolhe se deseja incluir.</p>
               </div>
               {BUMPS.map((b, index) => (
                 <label
                   key={b.id}
-                  className={`group relative block cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${bumps[b.id] ? "border-[#9a785d] ring-2 ring-[#c9ad91]/30" : "border-[#e8e0d8] hover:border-[#c9ad91]"}`}
+                  className={`group relative block cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${bumps[b.id] ? "border-[#b77f98] ring-2 ring-[#d7a9bd]/30" : "border-[#f0dce5] hover:border-[#d7a9bd]"}`}
                 >
-                  <div className="relative flex h-28 items-center justify-center overflow-hidden bg-[#f7f5f2] sm:h-32">
+                  <div className="relative flex h-28 items-center justify-center overflow-hidden bg-[#fff3f7] sm:h-32">
                     <img src={b.image} alt={b.imageAlt} loading="lazy" className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
-                    <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[8px] font-semibold tracking-[0.13em] text-[#77624f] shadow-sm">{b.eyebrow}</span>
-                    {index === 1 && <span className="absolute right-3 top-3 rounded-full bg-[#29211d] px-2.5 py-1 text-[8px] font-semibold tracking-wider text-white">KIT COMPLETO</span>}
+                    <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[8px] font-semibold tracking-[0.13em] text-[#987184] shadow-sm">{b.eyebrow}</span>
+                    {index === 1 && <span className="absolute right-3 top-3 rounded-full bg-[#513b46] px-2.5 py-1 text-[8px] font-semibold tracking-wider text-white">KIT COMPLETO</span>}
                   </div>
                   <div className="p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <p className="text-[8px] font-semibold tracking-[0.14em] text-[#a18770]">{b.tag}</p>
-                        <h3 className="mt-1.5 text-sm font-semibold leading-snug text-[#29231f]">{b.title}</h3>
-                        <p className="mt-1.5 text-[11px] leading-relaxed text-[#81766d]">{b.desc}</p>
+                        <p className="text-[8px] font-semibold tracking-[0.14em] text-[#b58b9d]">{b.tag}</p>
+                        <h3 className="mt-1.5 text-sm font-semibold leading-snug text-[#46343d]">{b.title}</h3>
+                        <p className="mt-1.5 text-[11px] leading-relaxed text-[#927b87]">{b.desc}</p>
                       </div>
                       <div className="shrink-0 text-right">
-                        <p className="text-[8px] uppercase tracking-wider text-[#9a8b7e]">Por apenas</p>
-                        <p className="mt-1 text-lg font-bold tracking-tight text-[#29231f]">{formatBRL(b.price)}</p>
+                        <p className="text-[8px] uppercase tracking-wider text-[#b58b9d]">Por apenas</p>
+                        <p className="mt-1 text-lg font-bold tracking-tight text-[#46343d]">{formatBRL(b.price)}</p>
                       </div>
                     </div>
-                    <div className={`mt-4 flex items-center justify-center gap-2 rounded-lg px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.15em] transition-colors ${bumps[b.id] ? "bg-[#e9e1d8] text-[#4e3c2e]" : "bg-[#29211d] text-white group-hover:bg-[#5c493a]"}`}>
+                    <div className={`mt-4 flex items-center justify-center gap-2 rounded-lg px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.15em] transition-colors ${bumps[b.id] ? "bg-[#f8e8ef] text-[#694b5b]" : "bg-[#513b46] text-white group-hover:bg-[#765968]"}`}>
                       {bumps[b.id] ? <><Check className="h-3.5 w-3.5" /> Adicionado ao pedido</> : "Quero aproveitar esta oferta"}
                     </div>
                     <input
