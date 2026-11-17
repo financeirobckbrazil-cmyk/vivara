@@ -41,7 +41,7 @@ function ProductPage() {
   const charmOptions = charmIds.map((id) => products.find((item) => item.id === id)).filter((item): item is (typeof products)[number] => Boolean(item));
   const sizes = isRing ? ["16", "18", "20", "22"] : ["Único"];
   const images = [product.image];
-  const related = products.filter((item) => item.id !== product.id && !item.name.toLowerCase().startsWith("charm")).slice(0, 4);
+  const related = products.filter((item) => item.id !== product.id && !item.name.toLowerCase().startsWith("charm") && !["colar-prata-cravejado", "kit-limpeza", "flanela-polimento"].includes(item.id)).slice(0, 4);
   const category = /anel/i.test(product.name) ? "Anéis" : /colar/i.test(product.name) ? "Colares" : /pulseira/i.test(product.name) ? "Pulseiras" : "Charms";
   const imageFallback = /pulseira/i.test(product.name) ? "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200" : /anel/i.test(product.name) ? "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362" : /colar/i.test(product.name) ? "https://www.marcolino.pt/content/uploads/maingallery/697976_17087744779.jpg" : "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
   const charmFallback = "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
