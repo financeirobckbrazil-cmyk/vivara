@@ -39,6 +39,8 @@ function ProductPage() {
   const images = [product.image];
   const related = products.filter((item) => item.id !== product.id && !item.name.toLowerCase().startsWith("charm")).slice(0, 4);
   const category = /anel/i.test(product.name) ? "Anéis" : /colar/i.test(product.name) ? "Colares" : /pulseira/i.test(product.name) ? "Pulseiras" : "Charms";
+  const imageFallback = /pulseira/i.test(product.name) ? "https://au.pandora.net/dw/image/v2/BKNF_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw9e2949dc/productimages/singlepackshot/590719_V2_RGB.jpg?bgcolor=F5F5F5&sfrm=png&sh=1200&sm=fit&sw=1200" : /anel/i.test(product.name) ? "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362" : /colar/i.test(product.name) ? "https://www.marcolino.pt/content/uploads/maingallery/697976_17087744779.jpg" : "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
+  const charmFallback = "https://www.trendjuwelier.nl/media/catalog/product/cache/2/image/1000x/7/9/pandora-moments-792015-hartjes-bedel-van-zilver-graveerbaar-1.png";
 
   const addSelectedCharms = () => {
     Object.entries(selectedCharms).forEach(([id, qty]) => {
@@ -85,12 +87,12 @@ function ProductPage() {
             <div className="order-2 flex gap-2 sm:order-1 sm:flex-col">
               {images.map((image, index) => (
                 <button key={image + index} onClick={() => setActiveImage(index)} aria-label={`Ver imagem ${index + 1}`} className={`h-[68px] w-[68px] overflow-hidden border bg-white p-1 transition ${activeImage === index ? "border-[#b77f98]" : "border-[#f0dce5]"}`}>
-                  <img src={image} alt="" className="h-full w-full object-contain" />
+                  <img src={image} alt="" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = imageFallback; }} className="h-full w-full object-contain" />
                 </button>
               ))}
             </div>
             <div className="order-1 flex aspect-[4/5] max-h-[720px] items-center justify-center overflow-hidden bg-[#fff1f5] sm:order-2">
-              <img src={images[activeImage]} alt={product.name} className="h-full w-full object-contain p-3 sm:p-7" />
+              <img src={images[activeImage]} alt={product.name} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = imageFallback; }} className="h-full w-full object-contain p-3 sm:p-7" />
             </div>
           </section>
 
@@ -132,7 +134,7 @@ function ProductPage() {
                   const qty = selectedCharms[charm.id] ?? 0;
                   return <div key={charm.id} className={`overflow-hidden rounded-lg border ${qty > 0 ? "border-[#b77f98] ring-1 ring-[#d7a9bd]" : "border-[#f0dce5]"}`}>
                     <div className="aspect-square bg-[#fff3f7] p-1.5">
-                      <img src={charm.image} alt={charm.name} loading="lazy" className="h-full w-full object-contain" />
+                      <img src={charm.image} alt={charm.name} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = charmFallback; }} className="h-full w-full object-contain" />
                     </div>
                     <div className="p-2">
                       <p className="min-h-8 text-[10px] leading-4 text-[#46343d]">{charm.name}</p>
@@ -167,7 +169,7 @@ function ProductPage() {
           <div className="mb-7 flex items-end justify-between gap-4"><div><p className="text-[10px] uppercase tracking-[.23em] text-[#b58b9d]">Complete sua combinação</p><h2 className="mt-2 font-serif text-3xl">Você também pode gostar</h2></div><Link to="/#colecao" className="hidden items-center gap-2 text-[10px] uppercase tracking-wider underline underline-offset-4 sm:flex">Ver coleção <ArrowRight size={13} /></Link></div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
             {related.map((item) => <Link key={item.id} to="/produto/$productId" params={{ productId: item.id }} className="group border border-[#f0dce5] bg-white transition hover:-translate-y-1 hover:shadow-lg">
-              <div className="aspect-[4/5] overflow-hidden bg-[#fff1f5]"><img src={item.image} alt={item.name} loading="lazy" className="h-full w-full object-contain transition duration-500 group-hover:scale-105" /></div>
+              <div className="aspect-[4/5] overflow-hidden bg-[#fff1f5]"><img src={item.image} alt={item.name} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = /pulseira/i.test(item.name) ? imageFallback : /anel/i.test(item.name) ? "https://pandoraeg.com/cdn/shop/files/PandoraSterlingsilverringwithclearcubiczirconia190050C01_3.jpg?v=1754942745&width=2362" : /colar/i.test(item.name) ? "https://www.marcolino.pt/content/uploads/maingallery/697976_17087744779.jpg" : charmFallback; }} className="h-full w-full object-contain transition duration-500 group-hover:scale-105" /></div>
               <div className="p-3 sm:p-4"><p className="font-serif text-sm leading-snug">{item.name}</p><p className="mt-3 text-sm font-semibold">{formatBRL(item.price)}</p><span className="mt-3 inline-flex items-center gap-1 text-[9px] uppercase tracking-wider text-[#82766b]">Ver produto <ArrowRight size={11} /></span></div>
             </Link>)}
           </div>
