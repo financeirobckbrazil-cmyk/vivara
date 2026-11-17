@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Life Pandora | Coleção com finalização em platina" },
-      { name: "description", content: "Conheça 19 joias da nova coleção Pandora com acabamento em platina: pulseiras, charms, anéis e colares." },
+      { name: "description", content: "Conheça a coleção de pulseiras, anéis e colares." },
     ],
   }),
   component: HomePage,
@@ -182,7 +182,7 @@ function HomePage() {
 
       <section id="diferencial" className="bg-[#f9e8ef] px-6 py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
-          <div className="mx-auto h-[280px] w-[280px] md:h-[380px] md:w-[380px]"><img src={products[13].image} alt={products[13].name} loading="lazy" className="h-full w-full object-contain mix-blend-multiply" /></div>
+          <div className="mx-auto h-[280px] w-[280px] md:h-[380px] md:w-[380px]"><img src={products.find((p) => p.category === "Colares")!.image} alt={products.find((p) => p.category === "Colares")!.name} loading="lazy" className="h-full w-full object-contain mix-blend-multiply" /></div>
           <div><p className="text-[10px] uppercase tracking-[.25em] text-[#b58b9d]">Inovação e cuidado</p><h2 className="mt-3 font-serif text-3xl leading-tight md:text-5xl">O diferencial da coleção</h2><p className="mt-6 text-sm leading-7 text-[#806a75]">As peças são apresentadas com uma liga metálica exclusiva da Pandora e revestimento em platina, desenvolvidos para oferecer brilho duradouro, resistência à oxidação e propriedades hipoalergênicas.</p><p className="mt-4 text-sm leading-7 text-[#806a75]">Uma coleção que une design contemporâneo, delicadeza e personalidade, trazendo novas possibilidades para quem ama joias e acessórios sofisticados.</p><a href="#colecao" className="mt-8 inline-flex items-center gap-3 border-b border-[#46343d] pb-2 text-[10px] uppercase tracking-[.2em]">Explore as peças <ArrowRight size={14} /></a></div>
         </div>
       </section>
