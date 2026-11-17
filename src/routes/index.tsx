@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Heart, Menu, ShoppingBag, Sparkles, ArrowRight } from "lucide-react";
+import { Heart, Menu, ShoppingBag, Sparkles, ArrowRight, Search, UserRound } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { useNavigate } from "@tanstack/react-router";
 
@@ -218,13 +218,17 @@ function HomePage() {
   return (
     <main className="min-h-screen bg-[#fff9fb] text-[#46343d]">
       <div className="bg-[#46343d] px-4 py-2 text-center text-[10px] tracking-[.22em] text-white">ELEGÂNCIA EM CADA DETALHE · NOVA COLEÇÃO COM FINALIZAÇÃO EM PLATINA</div>
-      <header className="sticky top-0 z-30 border-b border-[#f0dce5] bg-[#fff9fb]/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <button aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full p-2 hover:bg-[#f9e8ef]"><Menu size={20} /></button>
-          <a href="#" className="font-serif text-2xl font-semibold tracking-[.18em]">LIFE <span className="text-[#b77f98]">PANDORA</span></a>
-          <a href="#colecao" className="rounded-full p-2 hover:bg-[#f9e8ef]" aria-label="Ver coleção"><ShoppingBag size={20} /></a>
+      <header className="sticky top-0 z-40 border-b border-[#f0dce5] bg-white/95 backdrop-blur">
+        <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 sm:h-[88px] sm:px-8">
+          <button aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full p-2.5 text-[#30252a] transition hover:bg-[#fff1f5]"><Menu size={27} strokeWidth={1.5} /></button>
+          <a href="#" aria-label="Life Pandora - início" className="font-sans text-[25px] font-semibold tracking-[-.045em] text-[#241c20] sm:text-[34px]">LIFE <span className="font-normal tracking-[-.055em]">PANDORA</span></a>
+          <div className="flex items-center gap-3 text-[#30252a] sm:gap-6">
+            <a href="#colecao" aria-label="Buscar produtos" className="rounded-full p-2 transition hover:bg-[#fff1f5]"><Search size={26} strokeWidth={1.5} /></a>
+            <a href="/compras" aria-label="Minha conta" className="rounded-full p-2 transition hover:bg-[#fff1f5]"><UserRound size={26} strokeWidth={1.5} /></a>
+            <a href="/carrinho" aria-label="Sacola de compras" className="rounded-full p-2 transition hover:bg-[#fff1f5]"><ShoppingBag size={27} strokeWidth={1.5} /></a>
+          </div>
         </div>
-        {menuOpen && <div className="border-t border-[#f0dce5] px-6 py-4 text-center text-sm"><a href="#colecao" onClick={() => setMenuOpen(false)}>A coleção</a><span className="mx-5">·</span><a href="#diferencial" onClick={() => setMenuOpen(false)}>O diferencial</a></div>}
+        {menuOpen && <div className="border-t border-[#f0dce5] bg-[#fff9fb] px-6 py-5 text-center text-sm text-[#46343d]"><a href="#colecao" onClick={() => setMenuOpen(false)}>A coleção</a><span className="mx-5 text-[#d7a9bd]">·</span><a href="#diferencial" onClick={() => setMenuOpen(false)}>O diferencial</a><span className="mx-5 text-[#d7a9bd]">·</span><a href="/contato">Contato</a></div>}
       </header>
 
       <section className="relative overflow-hidden bg-[#f9e8ef]">
