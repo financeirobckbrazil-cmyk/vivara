@@ -1,13 +1,14 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { products, type Product } from "./products";
 
-export type CartItem = { id: string; size: string; qty: number };
+export type CartItem = { id: string; size: string; qty: number; bonusQty?: number };
 export type Order = { id: string; date: string; items: CartItem[]; total: number };
 
 type CartCtx = {
   items: CartItem[];
   orders: Order[];
   add: (id: string, size: string) => void;
+  addWithBonus: (id: string, size: string, qty: number) => void;
   remove: (id: string, size: string) => void;
   setQty: (id: string, size: string, qty: number) => void;
   clear: () => void;
@@ -52,19 +53,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const addWithBonus = (id: string, size: string, qty: number) => {
+    if (qty <= 0) return;
+    setItems((prev) => {
+      const idx = prev.findIndex((i) => i.id === id && i.size === size);
+      if (idx >= 0) {
+        const next = [...prev];
+        const current = next[idx];
+        next[idx] = { ...current, qty: current.qty + qty, bonusQty: (current.bonusQty ?? 0) + qty };
+        return next;
+      }
+      return [...prev, { id, size, qty, bonusQty: qty }];
+    });
+  };
+
   const remove = (id: string, size: string) =>
     setItems((p) => p.filter((i) => !(i.id === id && i.size === size)));
 
   const setQty = (id: string, size: string, qty: number) =>
     setItems((p) =>
-      p.map((i) => (i.id === id && i.size === size ? { ...i, qty: Math.max(1, qty) } : i)),
+      p.map((i) => (i.id === id && i.size === size ? { ...i, qty: Math.max(1, qty), ...(i.bonusQty !== undefined ? { bonusQty: Math.max(1, qty) } : {}) } : i)),
     );
 
   const clear = () => setItems([]);
 
   const lookup = (id: string): Product | undefined => products.find((p) => p.id === id);
   const total = items.reduce((sum, i) => sum + (lookup(i.id)?.price ?? 0) * i.qty, 0);
-  const count = items.reduce((s, i) => s + i.qty, 0);
+  const count = items.reduce((s, i) => s + i.qty + (i.bonusQty ?? 0), 0);
 
   const checkout = (): Order | null => {
     if (items.length === 0) return null;
@@ -80,7 +95,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <Ctx.Provider value={{ items, orders, add, remove, setQty, clear, checkout, count, total }}>
+    <Ctx.Provider value={{ items, orders, add, addWithBonus, remove, setQty, clear, checkout, count, total }}>
       {children}
     </Ctx.Provider>
   );
