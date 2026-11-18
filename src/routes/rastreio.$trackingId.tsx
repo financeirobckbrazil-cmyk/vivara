@@ -62,24 +62,24 @@ function TrackingPage() {
                 <div><p className="text-[10px] font-semibold tracking-[.2em] text-[#b77f98]">STATUS DO PEDIDO</p><h2 className="mt-1 font-serif text-2xl">{order.stages[order.currentStage]?.label}</h2></div>
                 <span className="rounded-full bg-[#f9e8ef] px-3 py-1.5 text-[10px] font-semibold text-[#a45f82]">ETAPA {order.currentStage + 1} DE 8</span>
               </div>
-              <div className="mt-7">
-                {order.stages.map((stage, index) => (
-                  <div key={stage.label} className="relative flex gap-4 pb-7 last:pb-0">
-                    {index < order.stages.length - 1 && <span className={`absolute left-[15px] top-8 h-[calc(100%-14px)] w-px ${stage.completed ? "bg-[#d7a2b8]" : "bg-[#eee2e8]"}`}/>}
-                    <span className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border ${stage.completed ? "border-[#bd83a0] bg-[#f8e6ee] text-[#9d5e7d]" : "border-[#eadde3] bg-white text-[#c9b9c1]"}`}>
-                      {stage.completed ? <Check size={15}/> : <span className="text-xs">{index + 1}</span>}
-                    </span>
-                    <div className="min-w-0 flex-1 pt-0.5">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className={`text-sm ${stage.current ? "font-bold text-[#513b46]" : stage.completed ? "font-medium text-[#6d5962]" : "text-[#b9aab1]"}`}>{stage.label}</h3>
-                        {stage.current && <span className="rounded-full bg-[#f8e8ef] px-2 py-0.5 text-[9px] font-bold tracking-wider text-[#a45f82]">ATUAL</span>}
-                      </div>
-                      <p className="mt-1 flex items-center gap-1 text-[11px] text-[#a58f9a]"><Clock3 size={11}/> {index === 0 ? "1º dia" : `${index + 1}º dia`} · {new Date(stage.expectedAt).toLocaleDateString("pt-BR")}</p>
-                    </div>
+              <div className="mt-7 rounded-xl border border-[#f0d8e3] bg-[#fff8fb] p-6 sm:p-8">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f8e6ee] text-[#9d5e7d]"><Package size={21}/></span>
+                  <div>
+                    <p className="text-[10px] font-semibold tracking-[.18em] text-[#b77f98]">SITUAÇÃO ATUAL</p>
+                    <h3 className="mt-1 font-serif text-xl text-[#513b46]">{order.stages[order.currentStage]?.label ?? "Pedido recebido"}</h3>
                   </div>
-                ))}
+                </div>
+                <div className="mt-5 h-2 overflow-hidden rounded-full bg-[#f0e2e8]">
+                  <div className="h-full rounded-full bg-[#d58eaa] transition-all" style={{ width: `${((order.currentStage + 1) / 8) * 100}%` }}/>
+                </div>
+                <div className="mt-2 flex items-center justify-between text-[10px] text-[#a58f9a]">
+                  <span>Etapa {order.currentStage + 1} de 8</span>
+                  <span>{Math.round(((order.currentStage + 1) / 8) * 100)}% do processo</span>
+                </div>
+                <p className="mt-5 text-xs leading-5 text-[#967e89]">Esta é a situação atual do seu pedido. O status será atualizado conforme o andamento previsto da preparação e entrega.</p>
               </div>
-              <p className="mt-7 rounded-xl bg-[#fff6f9] p-4 text-xs leading-5 text-[#967e89]">As etapas são uma previsão automática de processamento em oito dias corridos a partir da confirmação do pagamento. A página não recebe eventos em tempo real da transportadora; prazos podem variar conforme a operação logística.</p>
+              <p className="mt-5 rounded-xl bg-[#fff6f9] p-4 text-xs leading-5 text-[#967e89]">A situação é uma previsão automática baseada no prazo estimado de oito dias corridos após a confirmação do pagamento. Ela não representa eventos em tempo real da transportadora; os prazos podem variar.</p>
             </section>
 
             <section className="mt-6 rounded-2xl border border-[#f0d8e3] bg-white p-5 sm:p-7">
