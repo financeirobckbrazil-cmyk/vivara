@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Lock, Copy, Loader2, Sparkles, ShieldCheck, Check, Search, UserRound, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { formatBRL, getProduct } from "@/lib/products";
 import { createPixPayment, checkPixStatus } from "@/lib/pingupag.functions";
+import { createPaidTracking } from "@/lib/tracking.functions";
 import { QRCodeSVG } from "qrcode.react";
 import { toast } from "sonner";
 
@@ -126,10 +127,50 @@ function CheckoutPage() {
 
   const pixFn = useServerFn(createPixPayment);
   const statusFn = useServerFn(checkPixStatus);
+  const trackingFn = useServerFn(createPaidTracking);
   const [pixLoading, setPixLoading] = useState(false);
   const [pix, setPix] = useState<{ qrCodeImage: string | null; copyPaste: string | null; externalId: string | null } | null>(null);
   const [paid, setPaid] = useState(false);
+  const [tracking, setTracking] = useState<{ trackingId: string; trackingUrl: string; emailSent: boolean } | null>(null);
+  const [trackingSaving, setTrackingSaving] = useState(false);
+  const [trackingError, setTrackingError] = useState("");
   const paidRef = useRef(false);
+
+  const savePaidTracking = useCallback(async () => {
+    if (!pix?.externalId || tracking || trackingSaving) return;
+    setTrackingSaving(true);
+    setTrackingError("");
+    try {
+      const result = await trackingFn({
+        data: {
+          externalId: pix.externalId,
+          customer: { name: customer.nome, email: customer.email },
+          items: items.map((item) => ({
+            name: getProduct(item.id)?.name || item.id,
+            quantity: item.qty + (item.bonusQty ?? 0),
+            size: item.size,
+          })),
+          total: grandTotal,
+          shippingMethod: SHIPPING.find((option) => option.id === shipping)?.label || shipping,
+          address: {
+            cep: address.cep,
+            street: address.rua,
+            number: address.numero,
+            neighborhood: address.bairro,
+            city: address.cidade,
+            state: address.estado,
+          },
+        },
+      });
+      setTracking(result);
+      if (result.emailSent) toast.success("Link de rastreio enviado para seu e-mail!");
+      else toast.warning("Rastreio criado. O envio de e-mail ainda precisa ser configurado.");
+    } catch (error: any) {
+      setTrackingError(error?.message || "Não foi possível criar o rastreio agora.");
+    } finally {
+      setTrackingSaving(false);
+    }
+  }, [pix?.externalId, tracking, trackingSaving, trackingFn, customer.nome, customer.email, items, grandTotal, shipping, address]);
 
   useEffect(() => {
     if (!pix?.externalId) return;
@@ -146,6 +187,7 @@ function CheckoutPage() {
           clearInterval(timer);
           setPaid(true);
           toast.success("Pagamento confirmado!");
+          await savePaidTracking();
         }
       } catch {
         /* segue tentando */
@@ -155,7 +197,7 @@ function CheckoutPage() {
       stopped = true;
       clearInterval(timer);
     };
-  }, [pix?.externalId, statusFn]);
+  }, [pix?.externalId, statusFn, savePaidTracking]);
 
   const handlePix = async () => {
     if (!step1Valid) {
@@ -363,10 +405,24 @@ function CheckoutPage() {
                 <StepHeader n={3} active title="PAGAMENTO VIA PIX" />
                 <div className="mt-6 text-center">
                   {paid ? (
-                    <div className="py-6 space-y-2">
-                      <div className="mx-auto w-14 h-14 rounded-full bg-[hsl(142_71%_45%)] text-white flex items-center justify-center text-2xl">✓</div>
+                    <div className="py-6 space-y-3">
+                      <div className="mx-auto w-14 h-14 rounded-full bg-[#f5e3eb] text-[#9d5e7d] flex items-center justify-center text-2xl">✓</div>
                       <h3 className="text-lg font-bold text-foreground">Pagamento aprovado!</h3>
-                      <p className="text-sm text-muted-foreground">Recebemos seu PIX. Em breve você receberá a confirmação por e-mail.</p>
+                      <p className="text-sm text-muted-foreground">Seu pedido foi confirmado. Estamos preparando seu acompanhamento.</p>
+                      {trackingSaving && <p className="text-xs text-[#987184]">Criando seu link de rastreio...</p>}
+                      {tracking && (
+                        <div className="mt-4 rounded-xl border border-[#efd8e3] bg-[#fff7fa] p-4">
+                          <p className="text-sm font-semibold text-[#513b46]">Seu rastreio está pronto!</p>
+                          <p className="mt-1 text-xs text-[#927b87]">{tracking.emailSent ? "Também enviamos o link para seu e-mail." : "Salve este link para acompanhar seu pedido."}</p>
+                          <Link to="/rastreio/$trackingId" params={{ trackingId: tracking.trackingId }} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#513b46] px-4 py-3 text-xs font-semibold tracking-widest text-white">ACOMPANHAR MEU PEDIDO <span>→</span></Link>
+                        </div>
+                      )}
+                      {trackingError && (
+                        <div className="rounded-lg bg-[#fff2f3] p-3 text-left">
+                          <p className="text-xs text-red-700">{trackingError}</p>
+                          <button onClick={savePaidTracking} className="mt-2 text-xs font-semibold text-[#8d526e] underline">Tentar criar rastreio novamente</button>
+                        </div>
+                      )}
                     </div>
                   ) : (
                   <>
