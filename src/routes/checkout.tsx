@@ -241,6 +241,16 @@ function CheckoutPage() {
     toast.success("Código copiado!");
   };
 
+  const copyTrackingCode = async () => {
+    if (!tracking?.trackingId) return;
+    try {
+      await navigator.clipboard.writeText(tracking.trackingId);
+      toast.success("Código de rastreio copiado!");
+    } catch {
+      toast.error("Não foi possível copiar. Selecione e copie o código manualmente.");
+    }
+  };
+
   if (items.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
@@ -420,8 +430,16 @@ function CheckoutPage() {
                       {tracking && (
                         <div className="mt-4 rounded-xl border border-[#efd8e3] bg-[#fff7fa] p-4">
                           <p className="text-sm font-semibold text-[#513b46]">Seu rastreio está pronto!</p>
-                          <p className="mt-1 text-xs text-[#927b87]">{tracking.emailSent ? "Também enviamos o link para seu e-mail." : "Salve este link para acompanhar seu pedido."}</p>
-                          <Link to="/rastreio/$trackingId" params={{ trackingId: tracking.trackingId }} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#513b46] px-4 py-3 text-xs font-semibold tracking-widest text-white">ACOMPANHAR MEU PEDIDO <span>→</span></Link>
+                          <p className="mt-1 text-xs text-[#927b87]">Guarde o código abaixo. Você também pode abrir o rastreio agora ou voltar a ele pelo link enviado ao seu e-mail.</p>
+                          <div className="mt-4 rounded-lg border border-[#ead2de] bg-white p-3 text-left">
+                            <p className="text-[10px] font-semibold tracking-widest text-[#987184]">SEU CÓDIGO DE RASTREIO</p>
+                            <div className="mt-2 flex items-center gap-2">
+                              <code className="min-w-0 flex-1 break-all text-sm font-semibold text-[#513b46]">{tracking.trackingId}</code>
+                              <button type="button" onClick={copyTrackingCode} className="inline-flex shrink-0 items-center gap-1 rounded-md border border-[#e8d3dd] px-3 py-2 text-[10px] font-semibold text-[#8d526e] hover:bg-[#fff2f7]"><Copy size={13}/> COPIAR</button>
+                            </div>
+                          </div>
+                          <Link to="/rastreio/$trackingId" params={{ trackingId: tracking.trackingId }} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#d58eaa] px-4 py-3 text-xs font-semibold tracking-widest text-white hover:bg-[#bd7897]">ABRIR MEU RASTREIO <span>→</span></Link>
+                          <p className="mt-2 text-[11px] text-[#927b87]">{tracking.emailSent ? "O link também foi enviado para seu e-mail." : "O envio do e-mail ainda não foi confirmado; salve o código e este link."}</p>
                         </div>
                       )}
                       {trackingError && (
