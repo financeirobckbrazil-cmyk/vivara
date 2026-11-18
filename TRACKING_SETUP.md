@@ -32,5 +32,6 @@ Depois de salvar as variáveis, faça um novo deploy.
 
 - O pedido é persistido no Supabase somente depois da confirmação de pagamento consultada no servidor.
 - O link exclusivo é mostrado na tela de sucesso e enviado ao e-mail cadastrado pelo Resend.
-- A página calcula as oito etapas em dias corridos desde a confirmação do PIX.
-- **Importante:** sem integração de eventos da transportadora, as etapas de envio/entrega são uma previsão automática e não uma leitura real do rastreamento dos Correios/Jadlog. Não informe ao cliente que houve uma leitura real da transportadora.
+- A página calcula as etapas previstas em dias corridos desde a confirmação do PIX.
+- A etapa “Pedido entregue” só aparece concluída quando a equipe registra a confirmação no banco, preenchendo `delivered_at` com a data/hora real. Exemplo no SQL Editor: `update public.life_pandora_tracking set delivered_at = now() where id = 'UUID_DO_PEDIDO';`.
+- **Importante:** sem integração de eventos da transportadora, as etapas intermediárias são uma previsão de processamento e transporte, não uma leitura real dos Correios/Jadlog. Não informe ao cliente que houve uma leitura real da transportadora.
