@@ -143,13 +143,13 @@ export const getTrackingOrder = createServerFn({ method: "GET" })
   .validator((input: unknown) => z.object({ trackingId: z.string().uuid() }).parse(input))
   .handler(async ({ data }) => {
     const rows = await supabaseRequest(
-      `life_pandora_tracking?select=id,customer_name,order_items,order_total,shipping_method,shipping_address,paid_at&id=eq.${data.trackingId}&limit=1`,
+      `life_pandora_tracking?select=id,customer_name,order_items,order_total,shipping_method,shipping_address,paid_at,delivered_at&id=eq.${data.trackingId}&limit=1`,
     );
     const order = Array.isArray(rows) ? rows[0] : null;
     if (!order) throw new Error("Pedido não encontrado.");
     const paidAt = new Date(order.paid_at);
     const elapsedDays = Math.max(0, Math.floor((Date.now() - paidAt.getTime()) / 86400000));
-    const currentStage = Math.min(7, elapsedDays);
+    const delivered = Boolean(order.delivered_at);\n    const currentStage = delivered ? 7 : Math.min(6, elapsedDays);
     return {
       id: order.id as string,
       customerName: order.customer_name as string,
