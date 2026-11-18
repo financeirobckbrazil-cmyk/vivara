@@ -145,11 +145,18 @@ function CheckoutPage() {
         data: {
           externalId: pix.externalId,
           customer: { name: customer.nome, email: customer.email },
-          items: items.map((item) => ({
-            name: getProduct(item.id)?.name || item.id,
-            quantity: item.qty + (item.bonusQty ?? 0),
-            size: item.size,
-          })),
+          items: [
+            ...items.map((item) => ({
+              name: getProduct(item.id)?.name || item.id,
+              quantity: item.qty + (item.bonusQty ?? 0),
+              size: item.size,
+            })),
+            ...visibleBumps.filter((b) => bumps[b.id]).map((b) => ({
+              name: b.title,
+              quantity: 1,
+              size: "Único",
+            })),
+          ],
           total: grandTotal,
           shippingMethod: SHIPPING.find((option) => option.id === shipping)?.label || shipping,
           address: {
