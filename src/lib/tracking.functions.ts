@@ -149,7 +149,8 @@ export const getTrackingOrder = createServerFn({ method: "GET" })
     if (!order) throw new Error("Pedido não encontrado.");
     const paidAt = new Date(order.paid_at);
     const elapsedDays = Math.max(0, Math.floor((Date.now() - paidAt.getTime()) / 86400000));
-    const delivered = Boolean(order.delivered_at);\n    const currentStage = delivered ? 7 : Math.min(6, elapsedDays);
+    const delivered = Boolean(order.delivered_at);
+    const currentStage = delivered ? 7 : Math.min(6, elapsedDays);
     return {
       id: order.id as string,
       customerName: order.customer_name as string,
