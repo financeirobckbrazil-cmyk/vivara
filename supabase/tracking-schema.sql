@@ -9,7 +9,7 @@ create table if not exists public.life_pandora_tracking (
   order_total numeric(10,2) not null,
   shipping_method text not null,
   shipping_address jsonb not null default '{}'::jsonb,
-  paid_at timestamptz not null default now(),
+  paid_at timestamptz not null default now(),\n  delivered_at timestamptz,
   created_at timestamptz not null default now()
 );
 
